@@ -1,0 +1,2394 @@
+
+ProximitySensor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000c58  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000002a  00800060  00000c58  00000cec  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000004b  0080008a  0080008a  00000d16  2**0
+                  ALLOC
+  3 .stab         00002874  00000000  00000000  00000d18  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      0000192a  00000000  00000000  0000358c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      00000011  00000000  00000000  00004eb6  2**0
+                  CONTENTS, READONLY
+  6 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00004ec8  2**2
+                  CONTENTS, READONLY
+  7 .debug_info   000004e6  00000000  00000000  00004f04  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000004a3  00000000  00000000  000053ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   0000001a  00000000  00000000  0000588d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000196  00000000  00000000  000058a7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 f7 01 	jmp	0x3ee	; 0x3ee <__vector_7>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e8 e5       	ldi	r30, 0x58	; 88
+  68:	fc e0       	ldi	r31, 0x0C	; 12
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 38       	cpi	r26, 0x8A	; 138
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	aa e8       	ldi	r26, 0x8A	; 138
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a5 3d       	cpi	r26, 0xD5	; 213
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 f1 04 	call	0x9e2	; 0x9e2 <main>
+  8a:	0c 94 2a 06 	jmp	0xc54	; 0xc54 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <LCD_WriteData>:
+	LCD_SendCommand(0x0C); //disp on off
+}
+
+static void LCD_WriteData(uint8_t data)
+{
+	DIO_WritePort(LCD_DATA_PORT,LCD_DATA_PORT_MASK,data);
+  92:	48 2f       	mov	r20, r24
+  94:	60 ef       	ldi	r22, 0xF0	; 240
+  96:	80 e0       	ldi	r24, 0x00	; 0
+  98:	0e 94 8f 03 	call	0x71e	; 0x71e <DIO_WritePort>
+  9c:	08 95       	ret
+
+0000009e <LCD_ToggleEnablePin>:
+}
+
+static void LCD_ToggleEnablePin(void)
+{
+	DIO_WritePin(LCD_CTRL_PORT,LCD_EN_PIN,DIO_SET);
+  9e:	41 e0       	ldi	r20, 0x01	; 1
+  a0:	63 e0       	ldi	r22, 0x03	; 3
+  a2:	81 e0       	ldi	r24, 0x01	; 1
+  a4:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a8:	89 ef       	ldi	r24, 0xF9	; 249
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	01 97       	sbiw	r24, 0x01	; 1
+  ae:	f1 f7       	brne	.-4      	; 0xac <LCD_ToggleEnablePin+0xe>
+  b0:	00 c0       	rjmp	.+0      	; 0xb2 <LCD_ToggleEnablePin+0x14>
+  b2:	00 00       	nop
+	_delay_ms(1);
+	DIO_WritePin(LCD_CTRL_PORT,LCD_EN_PIN,DIO_RESET);
+  b4:	40 e0       	ldi	r20, 0x00	; 0
+  b6:	63 e0       	ldi	r22, 0x03	; 3
+  b8:	81 e0       	ldi	r24, 0x01	; 1
+  ba:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+  be:	89 ef       	ldi	r24, 0xF9	; 249
+  c0:	90 e0       	ldi	r25, 0x00	; 0
+  c2:	01 97       	sbiw	r24, 0x01	; 1
+  c4:	f1 f7       	brne	.-4      	; 0xc2 <LCD_ToggleEnablePin+0x24>
+  c6:	00 c0       	rjmp	.+0      	; 0xc8 <LCD_ToggleEnablePin+0x2a>
+  c8:	00 00       	nop
+  ca:	08 95       	ret
+
+000000cc <LCD_SendCommand>:
+	LCD_WriteData(Byte<<4);
+	LCD_ToggleEnablePin();
+}
+
+static void LCD_SendCommand(uint8_t Command)
+{ 
+  cc:	cf 93       	push	r28
+  ce:	c8 2f       	mov	r28, r24
+	LCD_SET_CMD_MODE();
+  d0:	40 e0       	ldi	r20, 0x00	; 0
+  d2:	61 e0       	ldi	r22, 0x01	; 1
+  d4:	81 e0       	ldi	r24, 0x01	; 1
+  d6:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+	LCD_WriteData(Command);
+  da:	8c 2f       	mov	r24, r28
+  dc:	0e 94 49 00 	call	0x92	; 0x92 <LCD_WriteData>
+	LCD_ToggleEnablePin();
+  e0:	0e 94 4f 00 	call	0x9e	; 0x9e <LCD_ToggleEnablePin>
+	LCD_WriteData(Command<<4);
+  e4:	8c 2f       	mov	r24, r28
+  e6:	82 95       	swap	r24
+  e8:	80 7f       	andi	r24, 0xF0	; 240
+  ea:	0e 94 49 00 	call	0x92	; 0x92 <LCD_WriteData>
+	LCD_ToggleEnablePin();
+  ee:	0e 94 4f 00 	call	0x9e	; 0x9e <LCD_ToggleEnablePin>
+}
+  f2:	cf 91       	pop	r28
+  f4:	08 95       	ret
+
+000000f6 <LCD_Init>:
+static void LCD_WriteData(uint8_t DataOrCommand);
+static void LCD_ToggleEnablePin(void);
+
+void LCD_Init(void)
+{	
+	DIO_ConfigPin(LCD_CTRL_PORT,LCD_RS_PIN,DIO_OUTPUT);
+  f6:	41 e0       	ldi	r20, 0x01	; 1
+  f8:	61 e0       	ldi	r22, 0x01	; 1
+  fa:	81 e0       	ldi	r24, 0x01	; 1
+  fc:	0e 94 26 03 	call	0x64c	; 0x64c <DIO_ConfigPin>
+	DIO_ConfigPin(LCD_CTRL_PORT,LCD_RW_PIN,DIO_OUTPUT);
+ 100:	41 e0       	ldi	r20, 0x01	; 1
+ 102:	62 e0       	ldi	r22, 0x02	; 2
+ 104:	81 e0       	ldi	r24, 0x01	; 1
+ 106:	0e 94 26 03 	call	0x64c	; 0x64c <DIO_ConfigPin>
+	DIO_ConfigPin(LCD_CTRL_PORT,LCD_EN_PIN,DIO_OUTPUT);
+ 10a:	41 e0       	ldi	r20, 0x01	; 1
+ 10c:	63 e0       	ldi	r22, 0x03	; 3
+ 10e:	81 e0       	ldi	r24, 0x01	; 1
+ 110:	0e 94 26 03 	call	0x64c	; 0x64c <DIO_ConfigPin>
+	DIO_ConfigPort(LCD_DATA_PORT,LCD_DATA_PORT_MASK,DIO_OUTPUT);
+ 114:	41 e0       	ldi	r20, 0x01	; 1
+ 116:	60 ef       	ldi	r22, 0xF0	; 240
+ 118:	80 e0       	ldi	r24, 0x00	; 0
+ 11a:	0e 94 43 03 	call	0x686	; 0x686 <DIO_ConfigPort>
+
+	LCD_SET_WRITE_MODE();
+ 11e:	40 e0       	ldi	r20, 0x00	; 0
+ 120:	62 e0       	ldi	r22, 0x02	; 2
+ 122:	81 e0       	ldi	r24, 0x01	; 1
+ 124:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+	LCD_SET_CMD_MODE();
+ 128:	40 e0       	ldi	r20, 0x00	; 0
+ 12a:	61 e0       	ldi	r22, 0x01	; 1
+ 12c:	81 e0       	ldi	r24, 0x01	; 1
+ 12e:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+	LCD_WriteData(0x20);
+ 132:	80 e2       	ldi	r24, 0x20	; 32
+ 134:	0e 94 49 00 	call	0x92	; 0x92 <LCD_WriteData>
+	LCD_ToggleEnablePin();
+ 138:	0e 94 4f 00 	call	0x9e	; 0x9e <LCD_ToggleEnablePin>
+	LCD_SendCommand(0x28); //function set
+ 13c:	88 e2       	ldi	r24, 0x28	; 40
+ 13e:	0e 94 66 00 	call	0xcc	; 0xcc <LCD_SendCommand>
+	LCD_SendCommand(0x0C); //disp on off
+ 142:	8c e0       	ldi	r24, 0x0C	; 12
+ 144:	0e 94 66 00 	call	0xcc	; 0xcc <LCD_SendCommand>
+ 148:	08 95       	ret
+
+0000014a <LCD_WriteChar>:
+	_delay_ms(1);
+}
+
+
+void LCD_WriteChar(uint8_t Byte)
+{ 
+ 14a:	cf 93       	push	r28
+ 14c:	c8 2f       	mov	r28, r24
+	LCD_SET_DATA_MODE();
+ 14e:	41 e0       	ldi	r20, 0x01	; 1
+ 150:	61 e0       	ldi	r22, 0x01	; 1
+ 152:	81 e0       	ldi	r24, 0x01	; 1
+ 154:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+	LCD_WriteData(Byte);
+ 158:	8c 2f       	mov	r24, r28
+ 15a:	0e 94 49 00 	call	0x92	; 0x92 <LCD_WriteData>
+	LCD_ToggleEnablePin(); 
+ 15e:	0e 94 4f 00 	call	0x9e	; 0x9e <LCD_ToggleEnablePin>
+	LCD_WriteData(Byte<<4);
+ 162:	8c 2f       	mov	r24, r28
+ 164:	82 95       	swap	r24
+ 166:	80 7f       	andi	r24, 0xF0	; 240
+ 168:	0e 94 49 00 	call	0x92	; 0x92 <LCD_WriteData>
+	LCD_ToggleEnablePin();
+ 16c:	0e 94 4f 00 	call	0x9e	; 0x9e <LCD_ToggleEnablePin>
+}
+ 170:	cf 91       	pop	r28
+ 172:	08 95       	ret
+
+00000174 <LCD_WriteString>:
+	LCD_WriteData(Command<<4);
+	LCD_ToggleEnablePin();
+}
+
+void LCD_WriteString(uint8_t* str,uint8_t len)
+{
+ 174:	0f 93       	push	r16
+ 176:	1f 93       	push	r17
+ 178:	cf 93       	push	r28
+ 17a:	df 93       	push	r29
+	uint8_t index;
+	for(index = 0 ; index < len ; index++)
+ 17c:	66 23       	and	r22, r22
+ 17e:	71 f0       	breq	.+28     	; 0x19c <LCD_WriteString+0x28>
+ 180:	ec 01       	movw	r28, r24
+ 182:	61 50       	subi	r22, 0x01	; 1
+ 184:	06 2f       	mov	r16, r22
+ 186:	10 e0       	ldi	r17, 0x00	; 0
+ 188:	0f 5f       	subi	r16, 0xFF	; 255
+ 18a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 18c:	08 0f       	add	r16, r24
+ 18e:	19 1f       	adc	r17, r25
+	{
+		LCD_WriteChar(str[index]);
+ 190:	89 91       	ld	r24, Y+
+ 192:	0e 94 a5 00 	call	0x14a	; 0x14a <LCD_WriteChar>
+}
+
+void LCD_WriteString(uint8_t* str,uint8_t len)
+{
+	uint8_t index;
+	for(index = 0 ; index < len ; index++)
+ 196:	c0 17       	cp	r28, r16
+ 198:	d1 07       	cpc	r29, r17
+ 19a:	d1 f7       	brne	.-12     	; 0x190 <LCD_WriteString+0x1c>
+	{
+		LCD_WriteChar(str[index]);
+	}
+}
+ 19c:	df 91       	pop	r29
+ 19e:	cf 91       	pop	r28
+ 1a0:	1f 91       	pop	r17
+ 1a2:	0f 91       	pop	r16
+ 1a4:	08 95       	ret
+
+000001a6 <LCD_SetCursor>:
+
+void LCD_SetCursor(uint8_t x,uint8_t y)
+{
+	if (x==0)
+ 1a6:	81 11       	cpse	r24, r1
+ 1a8:	05 c0       	rjmp	.+10     	; 0x1b4 <LCD_SetCursor+0xe>
+	{
+		LCD_SendCommand(0x80+y);
+ 1aa:	80 e8       	ldi	r24, 0x80	; 128
+ 1ac:	86 0f       	add	r24, r22
+ 1ae:	0e 94 66 00 	call	0xcc	; 0xcc <LCD_SendCommand>
+ 1b2:	08 95       	ret
+	}
+	else if (x==1)
+ 1b4:	81 30       	cpi	r24, 0x01	; 1
+ 1b6:	21 f4       	brne	.+8      	; 0x1c0 <LCD_SetCursor+0x1a>
+	{
+		LCD_SendCommand(0xC0+y);
+ 1b8:	80 ec       	ldi	r24, 0xC0	; 192
+ 1ba:	86 0f       	add	r24, r22
+ 1bc:	0e 94 66 00 	call	0xcc	; 0xcc <LCD_SendCommand>
+ 1c0:	08 95       	ret
+
+000001c2 <LCD_ClearScreen>:
+	}
+}
+
+void LCD_ClearScreen(void)
+{
+	LCD_SendCommand(0x01);
+ 1c2:	81 e0       	ldi	r24, 0x01	; 1
+ 1c4:	0e 94 66 00 	call	0xcc	; 0xcc <LCD_SendCommand>
+
+	LCD_SendCommand(0x28); //function set
+ 1c8:	88 e2       	ldi	r24, 0x28	; 40
+ 1ca:	0e 94 66 00 	call	0xcc	; 0xcc <LCD_SendCommand>
+
+	LCD_SendCommand(0x0C); //disp on off
+ 1ce:	8c e0       	ldi	r24, 0x0C	; 12
+ 1d0:	0e 94 66 00 	call	0xcc	; 0xcc <LCD_SendCommand>
+ 1d4:	08 95       	ret
+
+000001d6 <OS_Stop>:
+    *@param void
+    *@retval void
+*/
+void OS_Stop(void)
+{
+	OS_State = OS_State_Stopped;
+ 1d6:	10 92 8a 00 	sts	0x008A, r1	; 0x80008a <__data_end>
+
+	TIMER1_DISABLE_INT();
+ 1da:	89 b7       	in	r24, 0x39	; 57
+ 1dc:	8f 7e       	andi	r24, 0xEF	; 239
+ 1de:	89 bf       	out	0x39, r24	; 57
+	TIMER1_DISABLE();
+ 1e0:	8e b5       	in	r24, 0x2e	; 46
+ 1e2:	88 7f       	andi	r24, 0xF8	; 248
+ 1e4:	8e bd       	out	0x2e, r24	; 46
+ 1e6:	08 95       	ret
+
+000001e8 <OS_Start>:
+    *@param void
+    *@retval void
+*/
+void OS_Start(void)
+{
+	OS_State = OS_State_Running;
+ 1e8:	81 e0       	ldi	r24, 0x01	; 1
+ 1ea:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__data_end>
+
+
+	TIMER1_ENABLE(TIMER1_PRESCALER_8);
+ 1ee:	8e b5       	in	r24, 0x2e	; 46
+ 1f0:	88 7f       	andi	r24, 0xF8	; 248
+ 1f2:	82 60       	ori	r24, 0x02	; 2
+ 1f4:	8e bd       	out	0x2e, r24	; 46
+	TIMER1_ENABLE_INT();
+ 1f6:	89 b7       	in	r24, 0x39	; 57
+ 1f8:	80 61       	ori	r24, 0x10	; 16
+ 1fa:	89 bf       	out	0x39, r24	; 57
+	INT_ENABLE();
+ 1fc:	78 94       	sei
+ 1fe:	08 95       	ret
+
+00000200 <OS_Init>:
+    *@param void
+    *@retval void
+*/
+void OS_Init(void)
+{
+	TIMER1_SET_CTC_MODE();
+ 200:	8e b5       	in	r24, 0x2e	; 46
+ 202:	87 7e       	andi	r24, 0xE7	; 231
+ 204:	88 60       	ori	r24, 0x08	; 8
+ 206:	8e bd       	out	0x2e, r24	; 46
+ 208:	8f b5       	in	r24, 0x2f	; 47
+ 20a:	8c 7f       	andi	r24, 0xFC	; 252
+ 20c:	8f bd       	out	0x2f, r24	; 47
+
+	TIMER1_SET_RELOAD_VAL(1000);
+ 20e:	88 ee       	ldi	r24, 0xE8	; 232
+ 210:	93 e0       	ldi	r25, 0x03	; 3
+ 212:	9b bd       	out	0x2b, r25	; 43
+ 214:	8a bd       	out	0x2a, r24	; 42
+
+	OS_Start();
+ 216:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <OS_Start>
+ 21a:	08 95       	ret
+
+0000021c <OS_SuspendTask>:
+    *@param void
+    *@retval void
+*/
+void OS_SuspendTask(uint8_t task_id)
+{
+	if(task_id < MAX_TASKS_NUM)
+ 21c:	82 30       	cpi	r24, 0x02	; 2
+ 21e:	50 f4       	brcc	.+20     	; 0x234 <OS_SuspendTask+0x18>
+	{
+		INT_DISABLE();
+ 220:	f8 94       	cli
+		TCBs_Array[task_id].Task_State = TASK_STATE_DORMANT;
+ 222:	95 e1       	ldi	r25, 0x15	; 21
+ 224:	89 9f       	mul	r24, r25
+ 226:	f0 01       	movw	r30, r0
+ 228:	11 24       	eor	r1, r1
+ 22a:	e4 57       	subi	r30, 0x74	; 116
+ 22c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 22e:	82 e0       	ldi	r24, 0x02	; 2
+ 230:	82 83       	std	Z+2, r24	; 0x02
+		INT_ENABLE();
+ 232:	78 94       	sei
+ 234:	08 95       	ret
+
+00000236 <OS_RestartTask>:
+    *@param void
+    *@retval void
+*/
+void OS_RestartTask(uint8_t task_id)
+{
+	if(task_id < MAX_TASKS_NUM)
+ 236:	82 30       	cpi	r24, 0x02	; 2
+ 238:	88 f4       	brcc	.+34     	; 0x25c <OS_RestartTask+0x26>
+	{
+		INT_DISABLE();
+ 23a:	f8 94       	cli
+		TCBs_Array[task_id].Task_State = TASK_STATE_NOT_READY;
+ 23c:	95 e1       	ldi	r25, 0x15	; 21
+ 23e:	89 9f       	mul	r24, r25
+ 240:	f0 01       	movw	r30, r0
+ 242:	11 24       	eor	r1, r1
+ 244:	e4 57       	subi	r30, 0x74	; 116
+ 246:	ff 4f       	sbci	r31, 0xFF	; 255
+ 248:	12 82       	std	Z+2, r1	; 0x02
+		TCBs_Array[task_id].delay_counter = 0;
+ 24a:	13 86       	std	Z+11, r1	; 0x0b
+ 24c:	14 86       	std	Z+12, r1	; 0x0c
+ 24e:	15 86       	std	Z+13, r1	; 0x0d
+ 250:	16 86       	std	Z+14, r1	; 0x0e
+		TCBs_Array[task_id].period_counter = 0;
+ 252:	13 82       	std	Z+3, r1	; 0x03
+ 254:	14 82       	std	Z+4, r1	; 0x04
+ 256:	15 82       	std	Z+5, r1	; 0x05
+ 258:	16 82       	std	Z+6, r1	; 0x06
+		INT_ENABLE();
+ 25a:	78 94       	sei
+ 25c:	08 95       	ret
+
+0000025e <OS_ActivateTask>:
+    *@param void
+    *@retval void
+*/
+void OS_ActivateTask(uint8_t task_id)
+{
+	if(task_id < MAX_TASKS_NUM)
+ 25e:	82 30       	cpi	r24, 0x02	; 2
+ 260:	a8 f4       	brcc	.+42     	; 0x28c <OS_ActivateTask+0x2e>
+	{
+		INT_DISABLE();
+ 262:	f8 94       	cli
+		TCBs_Array[task_id].Task_State = TASK_STATE_NOT_READY;
+ 264:	95 e1       	ldi	r25, 0x15	; 21
+ 266:	89 9f       	mul	r24, r25
+ 268:	f0 01       	movw	r30, r0
+ 26a:	11 24       	eor	r1, r1
+ 26c:	e4 57       	subi	r30, 0x74	; 116
+ 26e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 270:	12 82       	std	Z+2, r1	; 0x02
+		TCBs_Array[task_id].delay_counter = TCBs_Array[task_id].delay;
+ 272:	87 85       	ldd	r24, Z+15	; 0x0f
+ 274:	90 89       	ldd	r25, Z+16	; 0x10
+ 276:	a1 89       	ldd	r26, Z+17	; 0x11
+ 278:	b2 89       	ldd	r27, Z+18	; 0x12
+ 27a:	83 87       	std	Z+11, r24	; 0x0b
+ 27c:	94 87       	std	Z+12, r25	; 0x0c
+ 27e:	a5 87       	std	Z+13, r26	; 0x0d
+ 280:	b6 87       	std	Z+14, r27	; 0x0e
+		TCBs_Array[task_id].period_counter = 0;
+ 282:	13 82       	std	Z+3, r1	; 0x03
+ 284:	14 82       	std	Z+4, r1	; 0x04
+ 286:	15 82       	std	Z+5, r1	; 0x05
+ 288:	16 82       	std	Z+6, r1	; 0x06
+		INT_ENABLE();
+ 28a:	78 94       	sei
+ 28c:	08 95       	ret
+
+0000028e <OS_DelayTask>:
+    *@param void
+    *@retval void
+*/
+void OS_DelayTask(uint8_t task_id,uint32_t delay)
+{
+	if(task_id < MAX_TASKS_NUM)
+ 28e:	82 30       	cpi	r24, 0x02	; 2
+ 290:	a8 f4       	brcc	.+42     	; 0x2bc <OS_DelayTask+0x2e>
+	{
+		INT_DISABLE();
+ 292:	f8 94       	cli
+		TCBs_Array[task_id].Task_State = TASK_STATE_NOT_READY;
+ 294:	95 e1       	ldi	r25, 0x15	; 21
+ 296:	89 9f       	mul	r24, r25
+ 298:	f0 01       	movw	r30, r0
+ 29a:	11 24       	eor	r1, r1
+ 29c:	e4 57       	subi	r30, 0x74	; 116
+ 29e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2a0:	12 82       	std	Z+2, r1	; 0x02
+		TCBs_Array[task_id].delay  = delay;
+ 2a2:	47 87       	std	Z+15, r20	; 0x0f
+ 2a4:	50 8b       	std	Z+16, r21	; 0x10
+ 2a6:	61 8b       	std	Z+17, r22	; 0x11
+ 2a8:	72 8b       	std	Z+18, r23	; 0x12
+		TCBs_Array[task_id].delay_counter = 0;
+ 2aa:	13 86       	std	Z+11, r1	; 0x0b
+ 2ac:	14 86       	std	Z+12, r1	; 0x0c
+ 2ae:	15 86       	std	Z+13, r1	; 0x0d
+ 2b0:	16 86       	std	Z+14, r1	; 0x0e
+		TCBs_Array[task_id].period_counter = 0;
+ 2b2:	13 82       	std	Z+3, r1	; 0x03
+ 2b4:	14 82       	std	Z+4, r1	; 0x04
+ 2b6:	15 82       	std	Z+5, r1	; 0x05
+ 2b8:	16 82       	std	Z+6, r1	; 0x06
+		INT_ENABLE();
+ 2ba:	78 94       	sei
+ 2bc:	08 95       	ret
+
+000002be <OS_AddTask>:
+    *@brief Add Task
+    *@param void
+    *@retval void
+*/
+void OS_AddTask(uint8_t task_id,pTask task_function,uint32_t period,uint32_t delay,uint8_t isPreemptive,tTask_State init_state)
+{
+ 2be:	af 92       	push	r10
+ 2c0:	cf 92       	push	r12
+ 2c2:	ef 92       	push	r14
+ 2c4:	ff 92       	push	r15
+ 2c6:	0f 93       	push	r16
+ 2c8:	1f 93       	push	r17
+	if(task_function != 0 &&
+ 2ca:	61 15       	cp	r22, r1
+ 2cc:	71 05       	cpc	r23, r1
+ 2ce:	e1 f0       	breq	.+56     	; 0x308 <OS_AddTask+0x4a>
+ 2d0:	82 30       	cpi	r24, 0x02	; 2
+ 2d2:	d0 f4       	brcc	.+52     	; 0x308 <OS_AddTask+0x4a>
+			task_id < MAX_TASKS_NUM &&
+			TCBs_Counter < MAX_TASKS_NUM)
+ 2d4:	90 91 8b 00 	lds	r25, 0x008B	; 0x80008b <TCBs_Counter>
+    *@retval void
+*/
+void OS_AddTask(uint8_t task_id,pTask task_function,uint32_t period,uint32_t delay,uint8_t isPreemptive,tTask_State init_state)
+{
+	if(task_function != 0 &&
+			task_id < MAX_TASKS_NUM &&
+ 2d8:	92 30       	cpi	r25, 0x02	; 2
+ 2da:	b0 f4       	brcc	.+44     	; 0x308 <OS_AddTask+0x4a>
+			TCBs_Counter < MAX_TASKS_NUM)
+	{
+		TCBs_Array[task_id].TaskId = task_id;
+ 2dc:	a5 e1       	ldi	r26, 0x15	; 21
+ 2de:	8a 9f       	mul	r24, r26
+ 2e0:	f0 01       	movw	r30, r0
+ 2e2:	11 24       	eor	r1, r1
+ 2e4:	e4 57       	subi	r30, 0x74	; 116
+ 2e6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2e8:	83 8b       	std	Z+19, r24	; 0x13
+		TCBs_Array[task_id].task_function = task_function;
+ 2ea:	71 83       	std	Z+1, r23	; 0x01
+ 2ec:	60 83       	st	Z, r22
+		TCBs_Array[task_id].period = period;
+ 2ee:	27 83       	std	Z+7, r18	; 0x07
+ 2f0:	30 87       	std	Z+8, r19	; 0x08
+ 2f2:	41 87       	std	Z+9, r20	; 0x09
+ 2f4:	52 87       	std	Z+10, r21	; 0x0a
+		TCBs_Array[task_id].delay = delay;
+ 2f6:	e7 86       	std	Z+15, r14	; 0x0f
+ 2f8:	f0 8a       	std	Z+16, r15	; 0x10
+ 2fa:	01 8b       	std	Z+17, r16	; 0x11
+ 2fc:	12 8b       	std	Z+18, r17	; 0x12
+		TCBs_Array[task_id].isPreemptive = isPreemptive;
+ 2fe:	c4 8a       	std	Z+20, r12	; 0x14
+		TCBs_Array[task_id].Task_State = init_state;
+ 300:	a2 82       	std	Z+2, r10	; 0x02
+
+		TCBs_Counter++;
+ 302:	9f 5f       	subi	r25, 0xFF	; 255
+ 304:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <TCBs_Counter>
+	}
+}
+ 308:	1f 91       	pop	r17
+ 30a:	0f 91       	pop	r16
+ 30c:	ff 90       	pop	r15
+ 30e:	ef 90       	pop	r14
+ 310:	cf 90       	pop	r12
+ 312:	af 90       	pop	r10
+ 314:	08 95       	ret
+
+00000316 <OS_SchedulerUpdate>:
+    *@brief Scheduler Update
+    *@param void
+    *@retval void
+*/
+void OS_SchedulerUpdate(void)
+{
+ 316:	ff 92       	push	r15
+ 318:	0f 93       	push	r16
+ 31a:	1f 93       	push	r17
+ 31c:	cf 93       	push	r28
+ 31e:	df 93       	push	r29
+	uint8_t itr;
+
+	if(OS_State == OS_State_Running)
+ 320:	80 91 8a 00 	lds	r24, 0x008A	; 0x80008a <__data_end>
+ 324:	81 30       	cpi	r24, 0x01	; 1
+ 326:	09 f0       	breq	.+2      	; 0x32a <OS_SchedulerUpdate+0x14>
+ 328:	5c c0       	rjmp	.+184    	; 0x3e2 <OS_SchedulerUpdate+0xcc>
+ 32a:	cc e8       	ldi	r28, 0x8C	; 140
+ 32c:	d0 e0       	ldi	r29, 0x00	; 0
+ 32e:	06 eb       	ldi	r16, 0xB6	; 182
+ 330:	10 e0       	ldi	r17, 0x00	; 0
+
+					if(TCBs_Array[itr].period_counter == TCBs_Array[itr].period)
+					{
+						TCBs_Array[itr].period_counter = 0;
+
+						TCBs_Array[itr].Task_State = TASK_STATE_READY;
+ 332:	ff 24       	eor	r15, r15
+ 334:	f3 94       	inc	r15
+ 336:	fe 01       	movw	r30, r28
+
+	if(OS_State == OS_State_Running)
+	{
+		for(itr = 0 ; itr < MAX_TASKS_NUM ; itr++)
+		{
+			if(TCBs_Array[itr].task_function != 0 &&
+ 338:	88 81       	ld	r24, Y
+ 33a:	99 81       	ldd	r25, Y+1	; 0x01
+ 33c:	89 2b       	or	r24, r25
+ 33e:	09 f4       	brne	.+2      	; 0x342 <OS_SchedulerUpdate+0x2c>
+ 340:	4b c0       	rjmp	.+150    	; 0x3d8 <OS_SchedulerUpdate+0xc2>
+ 342:	8a 81       	ldd	r24, Y+2	; 0x02
+ 344:	81 11       	cpse	r24, r1
+ 346:	48 c0       	rjmp	.+144    	; 0x3d8 <OS_SchedulerUpdate+0xc2>
+					TCBs_Array[itr].Task_State == TASK_STATE_NOT_READY)
+			{
+				if(TCBs_Array[itr].delay_counter <= TCBs_Array[itr].delay)
+ 348:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 34a:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 34c:	ad 85       	ldd	r26, Y+13	; 0x0d
+ 34e:	be 85       	ldd	r27, Y+14	; 0x0e
+ 350:	4f 85       	ldd	r20, Y+15	; 0x0f
+ 352:	58 89       	ldd	r21, Y+16	; 0x10
+ 354:	69 89       	ldd	r22, Y+17	; 0x11
+ 356:	7a 89       	ldd	r23, Y+18	; 0x12
+ 358:	48 17       	cp	r20, r24
+ 35a:	59 07       	cpc	r21, r25
+ 35c:	6a 07       	cpc	r22, r26
+ 35e:	7b 07       	cpc	r23, r27
+ 360:	88 f0       	brcs	.+34     	; 0x384 <OS_SchedulerUpdate+0x6e>
+				{
+					if(TCBs_Array[itr].delay_counter == TCBs_Array[itr].delay)
+ 362:	84 17       	cp	r24, r20
+ 364:	95 07       	cpc	r25, r21
+ 366:	a6 07       	cpc	r26, r22
+ 368:	b7 07       	cpc	r27, r23
+ 36a:	09 f4       	brne	.+2      	; 0x36e <OS_SchedulerUpdate+0x58>
+					{
+						TCBs_Array[itr].Task_State = TASK_STATE_READY;
+ 36c:	fa 82       	std	Y+2, r15	; 0x02
+					}
+
+					TCBs_Array[itr].delay_counter++;
+ 36e:	01 96       	adiw	r24, 0x01	; 1
+ 370:	a1 1d       	adc	r26, r1
+ 372:	b1 1d       	adc	r27, r1
+ 374:	83 87       	std	Z+11, r24	; 0x0b
+ 376:	94 87       	std	Z+12, r25	; 0x0c
+ 378:	a5 87       	std	Z+13, r26	; 0x0d
+ 37a:	b6 87       	std	Z+14, r27	; 0x0e
+
+						TCBs_Array[itr].Task_State = TASK_STATE_READY;
+					}
+				}
+
+				if(TCBs_Array[itr].Task_State == TASK_STATE_READY)
+ 37c:	82 81       	ldd	r24, Z+2	; 0x02
+ 37e:	81 30       	cpi	r24, 0x01	; 1
+ 380:	59 f5       	brne	.+86     	; 0x3d8 <OS_SchedulerUpdate+0xc2>
+ 382:	22 c0       	rjmp	.+68     	; 0x3c8 <OS_SchedulerUpdate+0xb2>
+
+					TCBs_Array[itr].delay_counter++;
+				}
+				else
+				{
+					if(TCBs_Array[itr].period != 0)
+ 384:	8f 81       	ldd	r24, Y+7	; 0x07
+ 386:	98 85       	ldd	r25, Y+8	; 0x08
+ 388:	a9 85       	ldd	r26, Y+9	; 0x09
+ 38a:	ba 85       	ldd	r27, Y+10	; 0x0a
+ 38c:	00 97       	sbiw	r24, 0x00	; 0
+ 38e:	a1 05       	cpc	r26, r1
+ 390:	b1 05       	cpc	r27, r1
+ 392:	61 f0       	breq	.+24     	; 0x3ac <OS_SchedulerUpdate+0x96>
+					{
+						TCBs_Array[itr].period_counter++;
+ 394:	4b 81       	ldd	r20, Y+3	; 0x03
+ 396:	5c 81       	ldd	r21, Y+4	; 0x04
+ 398:	6d 81       	ldd	r22, Y+5	; 0x05
+ 39a:	7e 81       	ldd	r23, Y+6	; 0x06
+ 39c:	4f 5f       	subi	r20, 0xFF	; 255
+ 39e:	5f 4f       	sbci	r21, 0xFF	; 255
+ 3a0:	6f 4f       	sbci	r22, 0xFF	; 255
+ 3a2:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3a4:	4b 83       	std	Y+3, r20	; 0x03
+ 3a6:	5c 83       	std	Y+4, r21	; 0x04
+ 3a8:	6d 83       	std	Y+5, r22	; 0x05
+ 3aa:	7e 83       	std	Y+6, r23	; 0x06
+					}
+
+					if(TCBs_Array[itr].period_counter == TCBs_Array[itr].period)
+ 3ac:	43 81       	ldd	r20, Z+3	; 0x03
+ 3ae:	54 81       	ldd	r21, Z+4	; 0x04
+ 3b0:	65 81       	ldd	r22, Z+5	; 0x05
+ 3b2:	76 81       	ldd	r23, Z+6	; 0x06
+ 3b4:	84 17       	cp	r24, r20
+ 3b6:	95 07       	cpc	r25, r21
+ 3b8:	a6 07       	cpc	r26, r22
+ 3ba:	b7 07       	cpc	r27, r23
+ 3bc:	69 f4       	brne	.+26     	; 0x3d8 <OS_SchedulerUpdate+0xc2>
+					{
+						TCBs_Array[itr].period_counter = 0;
+ 3be:	13 82       	std	Z+3, r1	; 0x03
+ 3c0:	14 82       	std	Z+4, r1	; 0x04
+ 3c2:	15 82       	std	Z+5, r1	; 0x05
+ 3c4:	16 82       	std	Z+6, r1	; 0x06
+
+						TCBs_Array[itr].Task_State = TASK_STATE_READY;
+ 3c6:	f2 82       	std	Z+2, r15	; 0x02
+					}
+				}
+
+				if(TCBs_Array[itr].Task_State == TASK_STATE_READY)
+				{
+					if(TCBs_Array[itr].isPreemptive == 1)
+ 3c8:	84 89       	ldd	r24, Z+20	; 0x14
+ 3ca:	81 30       	cpi	r24, 0x01	; 1
+ 3cc:	29 f4       	brne	.+10     	; 0x3d8 <OS_SchedulerUpdate+0xc2>
+					{
+						TCBs_Array[itr].Task_State = TASK_STATE_NOT_READY;
+ 3ce:	12 82       	std	Z+2, r1	; 0x02
+						TCBs_Array[itr].task_function();
+ 3d0:	01 90       	ld	r0, Z+
+ 3d2:	f0 81       	ld	r31, Z
+ 3d4:	e0 2d       	mov	r30, r0
+ 3d6:	09 95       	icall
+ 3d8:	65 96       	adiw	r28, 0x15	; 21
+{
+	uint8_t itr;
+
+	if(OS_State == OS_State_Running)
+	{
+		for(itr = 0 ; itr < MAX_TASKS_NUM ; itr++)
+ 3da:	c0 17       	cp	r28, r16
+ 3dc:	d1 07       	cpc	r29, r17
+ 3de:	09 f0       	breq	.+2      	; 0x3e2 <OS_SchedulerUpdate+0xcc>
+ 3e0:	aa cf       	rjmp	.-172    	; 0x336 <OS_SchedulerUpdate+0x20>
+					}
+				}
+			}
+		}
+	}
+}
+ 3e2:	df 91       	pop	r29
+ 3e4:	cf 91       	pop	r28
+ 3e6:	1f 91       	pop	r17
+ 3e8:	0f 91       	pop	r16
+ 3ea:	ff 90       	pop	r15
+ 3ec:	08 95       	ret
+
+000003ee <__vector_7>:
+typedef enum{
+	OS_State_Stopped,
+	OS_State_Running
+}tOS_State;
+
+TIMER1_REGIST_INT_CB(OS_SchedulerUpdate);
+ 3ee:	1f 92       	push	r1
+ 3f0:	0f 92       	push	r0
+ 3f2:	0f b6       	in	r0, 0x3f	; 63
+ 3f4:	0f 92       	push	r0
+ 3f6:	11 24       	eor	r1, r1
+ 3f8:	2f 93       	push	r18
+ 3fa:	3f 93       	push	r19
+ 3fc:	4f 93       	push	r20
+ 3fe:	5f 93       	push	r21
+ 400:	6f 93       	push	r22
+ 402:	7f 93       	push	r23
+ 404:	8f 93       	push	r24
+ 406:	9f 93       	push	r25
+ 408:	af 93       	push	r26
+ 40a:	bf 93       	push	r27
+ 40c:	ef 93       	push	r30
+ 40e:	ff 93       	push	r31
+ 410:	0e 94 8b 01 	call	0x316	; 0x316 <OS_SchedulerUpdate>
+ 414:	ff 91       	pop	r31
+ 416:	ef 91       	pop	r30
+ 418:	bf 91       	pop	r27
+ 41a:	af 91       	pop	r26
+ 41c:	9f 91       	pop	r25
+ 41e:	8f 91       	pop	r24
+ 420:	7f 91       	pop	r23
+ 422:	6f 91       	pop	r22
+ 424:	5f 91       	pop	r21
+ 426:	4f 91       	pop	r20
+ 428:	3f 91       	pop	r19
+ 42a:	2f 91       	pop	r18
+ 42c:	0f 90       	pop	r0
+ 42e:	0f be       	out	0x3f, r0	; 63
+ 430:	0f 90       	pop	r0
+ 432:	1f 90       	pop	r1
+ 434:	18 95       	reti
+
+00000436 <OS_DispatchTasks>:
+    *@brief OS Dispatch
+    *@param void
+    *@retval void
+*/
+void OS_DispatchTasks(void)
+{
+ 436:	ef 92       	push	r14
+ 438:	ff 92       	push	r15
+ 43a:	0f 93       	push	r16
+ 43c:	1f 93       	push	r17
+ 43e:	cf 93       	push	r28
+ 440:	df 93       	push	r29
+ 442:	cc e8       	ldi	r28, 0x8C	; 140
+ 444:	d0 e0       	ldi	r29, 0x00	; 0
+ 446:	06 eb       	ldi	r16, 0xB6	; 182
+ 448:	10 e0       	ldi	r17, 0x00	; 0
+	uint8_t itr;
+
+	for(itr = 0 ; itr < MAX_TASKS_NUM ; itr++)
+	{
+		if(TCBs_Array[itr].task_function != 0 &&
+ 44a:	e8 81       	ld	r30, Y
+ 44c:	f9 81       	ldd	r31, Y+1	; 0x01
+ 44e:	30 97       	sbiw	r30, 0x00	; 0
+ 450:	51 f0       	breq	.+20     	; 0x466 <OS_DispatchTasks+0x30>
+ 452:	8a 81       	ldd	r24, Y+2	; 0x02
+ 454:	81 30       	cpi	r24, 0x01	; 1
+ 456:	39 f4       	brne	.+14     	; 0x466 <OS_DispatchTasks+0x30>
+				TCBs_Array[itr].Task_State == TASK_STATE_READY)
+		{
+			TCBs_Array[itr].task_function();
+ 458:	09 95       	icall
+
+			INT_DISABLE();
+ 45a:	f8 94       	cli
+			if(TCBs_Array[itr].Task_State != TASK_STATE_DORMANT)
+ 45c:	8a 81       	ldd	r24, Y+2	; 0x02
+ 45e:	82 30       	cpi	r24, 0x02	; 2
+ 460:	09 f0       	breq	.+2      	; 0x464 <OS_DispatchTasks+0x2e>
+			{
+				TCBs_Array[itr].Task_State = TASK_STATE_NOT_READY;
+ 462:	1a 82       	std	Y+2, r1	; 0x02
+			}
+			INT_ENABLE();
+ 464:	78 94       	sei
+ 466:	65 96       	adiw	r28, 0x15	; 21
+*/
+void OS_DispatchTasks(void)
+{
+	uint8_t itr;
+
+	for(itr = 0 ; itr < MAX_TASKS_NUM ; itr++)
+ 468:	c0 17       	cp	r28, r16
+ 46a:	d1 07       	cpc	r29, r17
+ 46c:	71 f7       	brne	.-36     	; 0x44a <OS_DispatchTasks+0x14>
+				TCBs_Array[itr].Task_State = TASK_STATE_NOT_READY;
+			}
+			INT_ENABLE();
+		}
+	}
+}
+ 46e:	df 91       	pop	r29
+ 470:	cf 91       	pop	r28
+ 472:	1f 91       	pop	r17
+ 474:	0f 91       	pop	r16
+ 476:	ff 90       	pop	r15
+ 478:	ef 90       	pop	r14
+ 47a:	08 95       	ret
+
+0000047c <Queue_IsEmpty>:
+    *@brief Is Empty
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_IsEmpty(ptQueue pQ)
+{
+ 47c:	fc 01       	movw	r30, r24
+	uint8_t ret = 0;
+
+	if(pQ != 0)
+ 47e:	89 2b       	or	r24, r25
+ 480:	31 f0       	breq	.+12     	; 0x48e <Queue_IsEmpty+0x12>
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_IsEmpty(ptQueue pQ)
+{
+	uint8_t ret = 0;
+ 482:	81 e0       	ldi	r24, 0x01	; 1
+ 484:	96 89       	ldd	r25, Z+22	; 0x16
+ 486:	99 23       	and	r25, r25
+ 488:	19 f0       	breq	.+6      	; 0x490 <Queue_IsEmpty+0x14>
+ 48a:	80 e0       	ldi	r24, 0x00	; 0
+ 48c:	08 95       	ret
+ 48e:	80 e0       	ldi	r24, 0x00	; 0
+			ret=1;
+		}
+	}
+
+	return ret;
+}
+ 490:	08 95       	ret
+
+00000492 <Queue_IsFull>:
+	uint8_t ret = 0;
+	if(pQ->elements_no >= QUEUE_MAX_LENGTH)
+	{
+		ret=1;
+	}
+	return ret;
+ 492:	21 e0       	ldi	r18, 0x01	; 1
+ 494:	fc 01       	movw	r30, r24
+ 496:	86 89       	ldd	r24, Z+22	; 0x16
+ 498:	8a 30       	cpi	r24, 0x0A	; 10
+ 49a:	08 f4       	brcc	.+2      	; 0x49e <Queue_IsFull+0xc>
+ 49c:	20 e0       	ldi	r18, 0x00	; 0
+}
+ 49e:	82 2f       	mov	r24, r18
+ 4a0:	08 95       	ret
+
+000004a2 <Queue_Create>:
+    *@brief Create and init queue
+    *@param void
+    *@retval void
+*/
+ptQueue Queue_Create(tQueue_Type Queue_Type)
+{
+ 4a2:	cf 93       	push	r28
+ 4a4:	c8 2f       	mov	r28, r24
+	uint8_t itr ;
+	ptQueue pQ=malloc(sizeof(struct tQueue));
+ 4a6:	88 e1       	ldi	r24, 0x18	; 24
+ 4a8:	90 e0       	ldi	r25, 0x00	; 0
+ 4aa:	0e 94 09 05 	call	0xa12	; 0xa12 <malloc>
+
+	if(pQ != 0)
+ 4ae:	00 97       	sbiw	r24, 0x00	; 0
+ 4b0:	69 f0       	breq	.+26     	; 0x4cc <Queue_Create+0x2a>
+	{
+		pQ->elements_no = 0;
+ 4b2:	fc 01       	movw	r30, r24
+ 4b4:	16 8a       	std	Z+22, r1	; 0x16
+		pQ->tail_location = 0;
+ 4b6:	15 8a       	std	Z+21, r1	; 0x15
+		pQ->head_location = 0;
+ 4b8:	14 8a       	std	Z+20, r1	; 0x14
+		pQ->Queue_Type = Queue_Type;
+ 4ba:	c7 8b       	std	Z+23, r28	; 0x17
+ 4bc:	9c 01       	movw	r18, r24
+ 4be:	2c 5e       	subi	r18, 0xEC	; 236
+ 4c0:	3f 4f       	sbci	r19, 0xFF	; 255
+
+		for(itr = 0 ; itr < QUEUE_MAX_LENGTH ; itr++)
+		{
+			pQ->queue[itr] = 0;
+ 4c2:	11 92       	st	Z+, r1
+ 4c4:	11 92       	st	Z+, r1
+		pQ->elements_no = 0;
+		pQ->tail_location = 0;
+		pQ->head_location = 0;
+		pQ->Queue_Type = Queue_Type;
+
+		for(itr = 0 ; itr < QUEUE_MAX_LENGTH ; itr++)
+ 4c6:	e2 17       	cp	r30, r18
+ 4c8:	f3 07       	cpc	r31, r19
+ 4ca:	d9 f7       	brne	.-10     	; 0x4c2 <Queue_Create+0x20>
+			pQ->queue[itr] = 0;
+		}
+	}
+
+	return pQ;
+}
+ 4cc:	cf 91       	pop	r28
+ 4ce:	08 95       	ret
+
+000004d0 <Queue_Enqueue>:
+    *@brief Enuque to a Queue
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_Enqueue(ptQueue pQ,void* element)
+{
+ 4d0:	fc 01       	movw	r30, r24
+	uint8_t ret = 0 ;
+	INT_DISABLE();
+ 4d2:	f8 94       	cli
+    *@retval void
+*/
+uint8_t Queue_IsFull(ptQueue pQ)
+{
+	uint8_t ret = 0;
+	if(pQ->elements_no >= QUEUE_MAX_LENGTH)
+ 4d4:	86 89       	ldd	r24, Z+22	; 0x16
+*/
+uint8_t Queue_Enqueue(ptQueue pQ,void* element)
+{
+	uint8_t ret = 0 ;
+	INT_DISABLE();
+	if(Queue_IsFull(pQ) == 0)
+ 4d6:	8a 30       	cpi	r24, 0x0A	; 10
+ 4d8:	98 f4       	brcc	.+38     	; 0x500 <Queue_Enqueue+0x30>
+	{
+		pQ->queue[pQ->head_location] = element;
+ 4da:	94 89       	ldd	r25, Z+20	; 0x14
+ 4dc:	a9 2f       	mov	r26, r25
+ 4de:	b0 e0       	ldi	r27, 0x00	; 0
+ 4e0:	aa 0f       	add	r26, r26
+ 4e2:	bb 1f       	adc	r27, r27
+ 4e4:	ae 0f       	add	r26, r30
+ 4e6:	bf 1f       	adc	r27, r31
+ 4e8:	6d 93       	st	X+, r22
+ 4ea:	7c 93       	st	X, r23
+
+		if(pQ->head_location == QUEUE_MAX_LENGTH-1)
+ 4ec:	99 30       	cpi	r25, 0x09	; 9
+ 4ee:	11 f4       	brne	.+4      	; 0x4f4 <Queue_Enqueue+0x24>
+		{
+			pQ->head_location=0;
+ 4f0:	14 8a       	std	Z+20, r1	; 0x14
+ 4f2:	02 c0       	rjmp	.+4      	; 0x4f8 <Queue_Enqueue+0x28>
+		}
+		else
+		{
+			pQ->head_location++;
+ 4f4:	9f 5f       	subi	r25, 0xFF	; 255
+ 4f6:	94 8b       	std	Z+20, r25	; 0x14
+		}
+
+		pQ->elements_no++;
+ 4f8:	8f 5f       	subi	r24, 0xFF	; 255
+ 4fa:	86 8b       	std	Z+22, r24	; 0x16
+		ret = 1;
+ 4fc:	81 e0       	ldi	r24, 0x01	; 1
+ 4fe:	01 c0       	rjmp	.+2      	; 0x502 <Queue_Enqueue+0x32>
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_Enqueue(ptQueue pQ,void* element)
+{
+	uint8_t ret = 0 ;
+ 500:	80 e0       	ldi	r24, 0x00	; 0
+		}
+
+		pQ->elements_no++;
+		ret = 1;
+	}
+	INT_ENABLE();
+ 502:	78 94       	sei
+	return ret;
+}
+ 504:	08 95       	ret
+
+00000506 <Queue_Dequeue>:
+    *@brief Dequeue from Queue (without freeing)
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_Dequeue(ptQueue pQ,void** element)
+{
+ 506:	0f 93       	push	r16
+ 508:	1f 93       	push	r17
+ 50a:	cf 93       	push	r28
+ 50c:	df 93       	push	r29
+ 50e:	ec 01       	movw	r28, r24
+ 510:	8b 01       	movw	r16, r22
+	uint8_t ret = 0;
+
+	INT_DISABLE();
+ 512:	f8 94       	cli
+	if(Queue_IsEmpty(pQ) == 0)
+ 514:	0e 94 3e 02 	call	0x47c	; 0x47c <Queue_IsEmpty>
+ 518:	81 11       	cpse	r24, r1
+ 51a:	17 c0       	rjmp	.+46     	; 0x54a <Queue_Dequeue+0x44>
+	{
+		*element = pQ->queue[pQ->tail_location];
+ 51c:	ed 89       	ldd	r30, Y+21	; 0x15
+ 51e:	f0 e0       	ldi	r31, 0x00	; 0
+ 520:	ee 0f       	add	r30, r30
+ 522:	ff 1f       	adc	r31, r31
+ 524:	ec 0f       	add	r30, r28
+ 526:	fd 1f       	adc	r31, r29
+ 528:	80 81       	ld	r24, Z
+ 52a:	91 81       	ldd	r25, Z+1	; 0x01
+ 52c:	f8 01       	movw	r30, r16
+ 52e:	91 83       	std	Z+1, r25	; 0x01
+ 530:	80 83       	st	Z, r24
+
+		if(pQ->tail_location == QUEUE_MAX_LENGTH-1)
+ 532:	8d 89       	ldd	r24, Y+21	; 0x15
+ 534:	89 30       	cpi	r24, 0x09	; 9
+ 536:	11 f4       	brne	.+4      	; 0x53c <Queue_Dequeue+0x36>
+		{
+			pQ->tail_location=0;
+ 538:	1d 8a       	std	Y+21, r1	; 0x15
+ 53a:	02 c0       	rjmp	.+4      	; 0x540 <Queue_Dequeue+0x3a>
+		}
+		else
+		{
+			pQ->tail_location++;
+ 53c:	8f 5f       	subi	r24, 0xFF	; 255
+ 53e:	8d 8b       	std	Y+21, r24	; 0x15
+		}
+
+		pQ->elements_no--;
+ 540:	8e 89       	ldd	r24, Y+22	; 0x16
+ 542:	81 50       	subi	r24, 0x01	; 1
+ 544:	8e 8b       	std	Y+22, r24	; 0x16
+		ret = 1;
+ 546:	81 e0       	ldi	r24, 0x01	; 1
+ 548:	01 c0       	rjmp	.+2      	; 0x54c <Queue_Dequeue+0x46>
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_Dequeue(ptQueue pQ,void** element)
+{
+	uint8_t ret = 0;
+ 54a:	80 e0       	ldi	r24, 0x00	; 0
+		}
+
+		pQ->elements_no--;
+		ret = 1;
+	}
+	INT_ENABLE();
+ 54c:	78 94       	sei
+
+	return ret;
+}
+ 54e:	df 91       	pop	r29
+ 550:	cf 91       	pop	r28
+ 552:	1f 91       	pop	r17
+ 554:	0f 91       	pop	r16
+ 556:	08 95       	ret
+
+00000558 <Queue_GetHead>:
+    *@brief Fetch the Queue Head
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_GetHead(ptQueue pQ,void** element)
+{
+ 558:	0f 93       	push	r16
+ 55a:	1f 93       	push	r17
+ 55c:	cf 93       	push	r28
+ 55e:	df 93       	push	r29
+ 560:	ec 01       	movw	r28, r24
+ 562:	8b 01       	movw	r16, r22
+	uint8_t ret = 0;
+
+	INT_DISABLE();
+ 564:	f8 94       	cli
+	if(Queue_IsEmpty(pQ) == 0)
+ 566:	0e 94 3e 02 	call	0x47c	; 0x47c <Queue_IsEmpty>
+ 56a:	81 11       	cpse	r24, r1
+ 56c:	0d c0       	rjmp	.+26     	; 0x588 <Queue_GetHead+0x30>
+	{
+		*element = pQ->queue[pQ->tail_location];
+ 56e:	ed 89       	ldd	r30, Y+21	; 0x15
+ 570:	f0 e0       	ldi	r31, 0x00	; 0
+ 572:	ee 0f       	add	r30, r30
+ 574:	ff 1f       	adc	r31, r31
+ 576:	ec 0f       	add	r30, r28
+ 578:	fd 1f       	adc	r31, r29
+ 57a:	80 81       	ld	r24, Z
+ 57c:	91 81       	ldd	r25, Z+1	; 0x01
+ 57e:	f8 01       	movw	r30, r16
+ 580:	91 83       	std	Z+1, r25	; 0x01
+ 582:	80 83       	st	Z, r24
+
+		ret = 1;
+ 584:	81 e0       	ldi	r24, 0x01	; 1
+ 586:	01 c0       	rjmp	.+2      	; 0x58a <Queue_GetHead+0x32>
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_GetHead(ptQueue pQ,void** element)
+{
+	uint8_t ret = 0;
+ 588:	80 e0       	ldi	r24, 0x00	; 0
+	{
+		*element = pQ->queue[pQ->tail_location];
+
+		ret = 1;
+	}
+	INT_ENABLE();
+ 58a:	78 94       	sei
+	return ret;
+}
+ 58c:	df 91       	pop	r29
+ 58e:	cf 91       	pop	r28
+ 590:	1f 91       	pop	r17
+ 592:	0f 91       	pop	r16
+ 594:	08 95       	ret
+
+00000596 <Queue_DeleteHead>:
+    *@brief Dequeue from Queue (without freeing)
+    *@param void
+    *@retval void
+*/
+void* Queue_DeleteHead(ptQueue pQ)
+{
+ 596:	cf 93       	push	r28
+ 598:	df 93       	push	r29
+ 59a:	ec 01       	movw	r28, r24
+	void* element = 0;
+
+	INT_DISABLE();
+ 59c:	f8 94       	cli
+	if(Queue_IsEmpty(pQ) == 0)
+ 59e:	0e 94 3e 02 	call	0x47c	; 0x47c <Queue_IsEmpty>
+ 5a2:	81 11       	cpse	r24, r1
+ 5a4:	15 c0       	rjmp	.+42     	; 0x5d0 <Queue_DeleteHead+0x3a>
+	{
+		element = pQ->queue[pQ->tail_location];
+ 5a6:	9d 89       	ldd	r25, Y+21	; 0x15
+ 5a8:	e9 2f       	mov	r30, r25
+ 5aa:	f0 e0       	ldi	r31, 0x00	; 0
+ 5ac:	ee 0f       	add	r30, r30
+ 5ae:	ff 1f       	adc	r31, r31
+ 5b0:	ec 0f       	add	r30, r28
+ 5b2:	fd 1f       	adc	r31, r29
+ 5b4:	20 81       	ld	r18, Z
+ 5b6:	31 81       	ldd	r19, Z+1	; 0x01
+
+		pQ->queue[pQ->tail_location] = 0;
+ 5b8:	11 82       	std	Z+1, r1	; 0x01
+ 5ba:	10 82       	st	Z, r1
+
+		if(pQ->tail_location == QUEUE_MAX_LENGTH-1)
+ 5bc:	99 30       	cpi	r25, 0x09	; 9
+ 5be:	11 f4       	brne	.+4      	; 0x5c4 <Queue_DeleteHead+0x2e>
+		{
+			pQ->tail_location=0;
+ 5c0:	1d 8a       	std	Y+21, r1	; 0x15
+ 5c2:	02 c0       	rjmp	.+4      	; 0x5c8 <Queue_DeleteHead+0x32>
+		}
+		else
+		{
+			pQ->tail_location++;
+ 5c4:	9f 5f       	subi	r25, 0xFF	; 255
+ 5c6:	9d 8b       	std	Y+21, r25	; 0x15
+		}
+
+		pQ->elements_no--;
+ 5c8:	9e 89       	ldd	r25, Y+22	; 0x16
+ 5ca:	91 50       	subi	r25, 0x01	; 1
+ 5cc:	9e 8b       	std	Y+22, r25	; 0x16
+ 5ce:	02 c0       	rjmp	.+4      	; 0x5d4 <Queue_DeleteHead+0x3e>
+    *@param void
+    *@retval void
+*/
+void* Queue_DeleteHead(ptQueue pQ)
+{
+	void* element = 0;
+ 5d0:	20 e0       	ldi	r18, 0x00	; 0
+ 5d2:	30 e0       	ldi	r19, 0x00	; 0
+			pQ->tail_location++;
+		}
+
+		pQ->elements_no--;
+	}
+	INT_ENABLE();
+ 5d4:	78 94       	sei
+
+	return element;
+}
+ 5d6:	c9 01       	movw	r24, r18
+ 5d8:	df 91       	pop	r29
+ 5da:	cf 91       	pop	r28
+ 5dc:	08 95       	ret
+
+000005de <Queue_Traverse>:
+    *@brief Traverse on queue and pass each element to the passed function until a terminating point defined by passed function
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_Traverse(ptQueue pQ,uint8_t (*p)(void* element,void* parameter,uint16_t parameter_length),void* parameter,uint16_t parameter_length)
+{
+ 5de:	bf 92       	push	r11
+ 5e0:	cf 92       	push	r12
+ 5e2:	df 92       	push	r13
+ 5e4:	ef 92       	push	r14
+ 5e6:	ff 92       	push	r15
+ 5e8:	0f 93       	push	r16
+ 5ea:	1f 93       	push	r17
+ 5ec:	cf 93       	push	r28
+ 5ee:	df 93       	push	r29
+ 5f0:	ec 01       	movw	r28, r24
+ 5f2:	8b 01       	movw	r16, r22
+ 5f4:	7a 01       	movw	r14, r20
+ 5f6:	69 01       	movw	r12, r18
+	uint8_t terminating_flag = 0;
+	uint8_t itr = pQ->tail_location;
+
+	if(Queue_IsEmpty(pQ) != 1)
+ 5f8:	0e 94 3e 02 	call	0x47c	; 0x47c <Queue_IsEmpty>
+ 5fc:	81 30       	cpi	r24, 0x01	; 1
+ 5fe:	d9 f0       	breq	.+54     	; 0x636 <Queue_Traverse+0x58>
+    *@retval void
+*/
+uint8_t Queue_Traverse(ptQueue pQ,uint8_t (*p)(void* element,void* parameter,uint16_t parameter_length),void* parameter,uint16_t parameter_length)
+{
+	uint8_t terminating_flag = 0;
+	uint8_t itr = pQ->tail_location;
+ 600:	bd 88       	ldd	r11, Y+21	; 0x15
+ 602:	80 e0       	ldi	r24, 0x00	; 0
+ 604:	14 c0       	rjmp	.+40     	; 0x62e <Queue_Traverse+0x50>
+
+	if(Queue_IsEmpty(pQ) != 1)
+	{
+		while(itr != pQ->head_location)
+		{
+			terminating_flag = p(pQ->queue[itr],parameter,parameter_length);
+ 606:	eb 2d       	mov	r30, r11
+ 608:	f0 e0       	ldi	r31, 0x00	; 0
+ 60a:	ee 0f       	add	r30, r30
+ 60c:	ff 1f       	adc	r31, r31
+ 60e:	ec 0f       	add	r30, r28
+ 610:	fd 1f       	adc	r31, r29
+ 612:	a6 01       	movw	r20, r12
+ 614:	b7 01       	movw	r22, r14
+ 616:	80 81       	ld	r24, Z
+ 618:	91 81       	ldd	r25, Z+1	; 0x01
+ 61a:	f8 01       	movw	r30, r16
+ 61c:	09 95       	icall
+
+			if(terminating_flag == 1)
+ 61e:	81 30       	cpi	r24, 0x01	; 1
+ 620:	59 f0       	breq	.+22     	; 0x638 <Queue_Traverse+0x5a>
+			{
+				break;
+			}
+
+			if(itr == QUEUE_MAX_LENGTH-1)
+ 622:	f9 e0       	ldi	r31, 0x09	; 9
+ 624:	bf 16       	cp	r11, r31
+ 626:	11 f0       	breq	.+4      	; 0x62c <Queue_Traverse+0x4e>
+			{
+				itr=0;
+			}
+			else
+			{
+				itr++;
+ 628:	b3 94       	inc	r11
+ 62a:	01 c0       	rjmp	.+2      	; 0x62e <Queue_Traverse+0x50>
+				break;
+			}
+
+			if(itr == QUEUE_MAX_LENGTH-1)
+			{
+				itr=0;
+ 62c:	b1 2c       	mov	r11, r1
+	uint8_t terminating_flag = 0;
+	uint8_t itr = pQ->tail_location;
+
+	if(Queue_IsEmpty(pQ) != 1)
+	{
+		while(itr != pQ->head_location)
+ 62e:	9c 89       	ldd	r25, Y+20	; 0x14
+ 630:	b9 12       	cpse	r11, r25
+ 632:	e9 cf       	rjmp	.-46     	; 0x606 <Queue_Traverse+0x28>
+ 634:	01 c0       	rjmp	.+2      	; 0x638 <Queue_Traverse+0x5a>
+    *@param void
+    *@retval void
+*/
+uint8_t Queue_Traverse(ptQueue pQ,uint8_t (*p)(void* element,void* parameter,uint16_t parameter_length),void* parameter,uint16_t parameter_length)
+{
+	uint8_t terminating_flag = 0;
+ 636:	80 e0       	ldi	r24, 0x00	; 0
+			}
+		}
+	}
+
+	return terminating_flag;
+}
+ 638:	df 91       	pop	r29
+ 63a:	cf 91       	pop	r28
+ 63c:	1f 91       	pop	r17
+ 63e:	0f 91       	pop	r16
+ 640:	ff 90       	pop	r15
+ 642:	ef 90       	pop	r14
+ 644:	df 90       	pop	r13
+ 646:	cf 90       	pop	r12
+ 648:	bf 90       	pop	r11
+ 64a:	08 95       	ret
+
+0000064c <DIO_ConfigPin>:
+static volatile uint8_t *port_reg_arr[DIO_PORT_NO] = {&PORTA,&PORTB,&PORTC,&PORTD};
+static volatile uint8_t *pin_reg_arr[DIO_PORT_NO] = {&PINA,&PINB,&PINC,&PIND};
+
+void DIO_ConfigPin(tDIO_Port port,uint8_t pin,tDIO_Direction dir)
+{
+	SET_VAR_VAL(*dir_reg_arr[port],1 << pin,dir << pin);
+ 64c:	e8 2f       	mov	r30, r24
+ 64e:	f0 e0       	ldi	r31, 0x00	; 0
+ 650:	ee 0f       	add	r30, r30
+ 652:	ff 1f       	adc	r31, r31
+ 654:	ea 58       	subi	r30, 0x8A	; 138
+ 656:	ff 4f       	sbci	r31, 0xFF	; 255
+ 658:	01 90       	ld	r0, Z+
+ 65a:	f0 81       	ld	r31, Z
+ 65c:	e0 2d       	mov	r30, r0
+ 65e:	20 81       	ld	r18, Z
+ 660:	50 e0       	ldi	r21, 0x00	; 0
+ 662:	06 2e       	mov	r0, r22
+ 664:	02 c0       	rjmp	.+4      	; 0x66a <DIO_ConfigPin+0x1e>
+ 666:	44 0f       	add	r20, r20
+ 668:	55 1f       	adc	r21, r21
+ 66a:	0a 94       	dec	r0
+ 66c:	e2 f7       	brpl	.-8      	; 0x666 <DIO_ConfigPin+0x1a>
+ 66e:	42 27       	eor	r20, r18
+ 670:	81 e0       	ldi	r24, 0x01	; 1
+ 672:	90 e0       	ldi	r25, 0x00	; 0
+ 674:	02 c0       	rjmp	.+4      	; 0x67a <DIO_ConfigPin+0x2e>
+ 676:	88 0f       	add	r24, r24
+ 678:	99 1f       	adc	r25, r25
+ 67a:	6a 95       	dec	r22
+ 67c:	e2 f7       	brpl	.-8      	; 0x676 <DIO_ConfigPin+0x2a>
+ 67e:	48 23       	and	r20, r24
+ 680:	42 27       	eor	r20, r18
+ 682:	40 83       	st	Z, r20
+ 684:	08 95       	ret
+
+00000686 <DIO_ConfigPort>:
+}
+void DIO_ConfigPort(tDIO_Port port,uint8_t mask,tDIO_Direction dir)
+{
+	SET_VAR_VAL(*dir_reg_arr[port],mask,dir == DIO_OUTPUT ? 0xff : 0);
+ 686:	e8 2f       	mov	r30, r24
+ 688:	f0 e0       	ldi	r31, 0x00	; 0
+ 68a:	ee 0f       	add	r30, r30
+ 68c:	ff 1f       	adc	r31, r31
+ 68e:	ea 58       	subi	r30, 0x8A	; 138
+ 690:	ff 4f       	sbci	r31, 0xFF	; 255
+ 692:	01 90       	ld	r0, Z+
+ 694:	f0 81       	ld	r31, Z
+ 696:	e0 2d       	mov	r30, r0
+ 698:	90 81       	ld	r25, Z
+ 69a:	81 e0       	ldi	r24, 0x01	; 1
+ 69c:	41 30       	cpi	r20, 0x01	; 1
+ 69e:	09 f0       	breq	.+2      	; 0x6a2 <DIO_ConfigPort+0x1c>
+ 6a0:	80 e0       	ldi	r24, 0x00	; 0
+ 6a2:	81 95       	neg	r24
+ 6a4:	89 27       	eor	r24, r25
+ 6a6:	86 23       	and	r24, r22
+ 6a8:	98 27       	eor	r25, r24
+ 6aa:	90 83       	st	Z, r25
+ 6ac:	08 95       	ret
+
+000006ae <DIO_WritePin>:
+}
+
+void DIO_WritePin(tDIO_Port port,uint8_t pin,tDIO_Level level)
+{
+	SET_VAR_VAL(*port_reg_arr[port],1 << pin,level << pin);
+ 6ae:	e8 2f       	mov	r30, r24
+ 6b0:	f0 e0       	ldi	r31, 0x00	; 0
+ 6b2:	ee 0f       	add	r30, r30
+ 6b4:	ff 1f       	adc	r31, r31
+ 6b6:	e2 59       	subi	r30, 0x92	; 146
+ 6b8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 6ba:	01 90       	ld	r0, Z+
+ 6bc:	f0 81       	ld	r31, Z
+ 6be:	e0 2d       	mov	r30, r0
+ 6c0:	20 81       	ld	r18, Z
+ 6c2:	50 e0       	ldi	r21, 0x00	; 0
+ 6c4:	06 2e       	mov	r0, r22
+ 6c6:	02 c0       	rjmp	.+4      	; 0x6cc <DIO_WritePin+0x1e>
+ 6c8:	44 0f       	add	r20, r20
+ 6ca:	55 1f       	adc	r21, r21
+ 6cc:	0a 94       	dec	r0
+ 6ce:	e2 f7       	brpl	.-8      	; 0x6c8 <DIO_WritePin+0x1a>
+ 6d0:	42 27       	eor	r20, r18
+ 6d2:	81 e0       	ldi	r24, 0x01	; 1
+ 6d4:	90 e0       	ldi	r25, 0x00	; 0
+ 6d6:	02 c0       	rjmp	.+4      	; 0x6dc <DIO_WritePin+0x2e>
+ 6d8:	88 0f       	add	r24, r24
+ 6da:	99 1f       	adc	r25, r25
+ 6dc:	6a 95       	dec	r22
+ 6de:	e2 f7       	brpl	.-8      	; 0x6d8 <DIO_WritePin+0x2a>
+ 6e0:	48 23       	and	r20, r24
+ 6e2:	42 27       	eor	r20, r18
+ 6e4:	40 83       	st	Z, r20
+ 6e6:	08 95       	ret
+
+000006e8 <DIO_ReadPin>:
+}
+tDIO_Level DIO_ReadPin(tDIO_Port port,uint8_t pin)
+{
+	return GET_BIT(*pin_reg_arr[port],pin);
+ 6e8:	e8 2f       	mov	r30, r24
+ 6ea:	f0 e0       	ldi	r31, 0x00	; 0
+ 6ec:	ee 0f       	add	r30, r30
+ 6ee:	ff 1f       	adc	r31, r31
+ 6f0:	ea 59       	subi	r30, 0x9A	; 154
+ 6f2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 6f4:	01 90       	ld	r0, Z+
+ 6f6:	f0 81       	ld	r31, Z
+ 6f8:	e0 2d       	mov	r30, r0
+ 6fa:	20 81       	ld	r18, Z
+ 6fc:	81 e0       	ldi	r24, 0x01	; 1
+ 6fe:	90 e0       	ldi	r25, 0x00	; 0
+ 700:	06 2e       	mov	r0, r22
+ 702:	02 c0       	rjmp	.+4      	; 0x708 <DIO_ReadPin+0x20>
+ 704:	88 0f       	add	r24, r24
+ 706:	99 1f       	adc	r25, r25
+ 708:	0a 94       	dec	r0
+ 70a:	e2 f7       	brpl	.-8      	; 0x704 <DIO_ReadPin+0x1c>
+ 70c:	30 e0       	ldi	r19, 0x00	; 0
+ 70e:	82 23       	and	r24, r18
+ 710:	93 23       	and	r25, r19
+ 712:	02 c0       	rjmp	.+4      	; 0x718 <DIO_ReadPin+0x30>
+ 714:	95 95       	asr	r25
+ 716:	87 95       	ror	r24
+ 718:	6a 95       	dec	r22
+ 71a:	e2 f7       	brpl	.-8      	; 0x714 <DIO_ReadPin+0x2c>
+}
+ 71c:	08 95       	ret
+
+0000071e <DIO_WritePort>:
+void DIO_WritePort(tDIO_Port port,uint8_t mask,uint8_t value)
+{
+	*port_reg_arr[port] = value;
+ 71e:	e8 2f       	mov	r30, r24
+ 720:	f0 e0       	ldi	r31, 0x00	; 0
+ 722:	ee 0f       	add	r30, r30
+ 724:	ff 1f       	adc	r31, r31
+ 726:	e2 59       	subi	r30, 0x92	; 146
+ 728:	ff 4f       	sbci	r31, 0xFF	; 255
+ 72a:	01 90       	ld	r0, Z+
+ 72c:	f0 81       	ld	r31, Z
+ 72e:	e0 2d       	mov	r30, r0
+ 730:	40 83       	st	Z, r20
+ 732:	08 95       	ret
+
+00000734 <DIO_ReadPort>:
+}
+uint8_t DIO_ReadPort(tDIO_Port port,uint8_t mask)
+{
+	return (*pin_reg_arr[port] & mask);
+ 734:	e8 2f       	mov	r30, r24
+ 736:	f0 e0       	ldi	r31, 0x00	; 0
+ 738:	ee 0f       	add	r30, r30
+ 73a:	ff 1f       	adc	r31, r31
+ 73c:	ea 59       	subi	r30, 0x9A	; 154
+ 73e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 740:	01 90       	ld	r0, Z+
+ 742:	f0 81       	ld	r31, Z
+ 744:	e0 2d       	mov	r30, r0
+ 746:	80 81       	ld	r24, Z
+}
+ 748:	86 23       	and	r24, r22
+ 74a:	08 95       	ret
+
+0000074c <Keypad_Update>:
+		while(1);
+
+	OS_AddTask(0,Keypad_Update,5,0,0,TASK_STATE_NOT_READY);
+}
+void Keypad_Update(void)
+{
+ 74c:	1f 93       	push	r17
+ 74e:	cf 93       	push	r28
+ 750:	df 93       	push	r29
+
+	static tKeypad_Rows current_row = KEYPAD_ROW_NO_0;
+	static char button_state[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {0};
+	static uint8_t previous_sample[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {0};
+
+	for(col_itr = KEYPAD_COL_NO_0; col_itr < KEYPAD_COL_NO ; col_itr++)
+ 752:	c0 e0       	ldi	r28, 0x00	; 0
+		{
+		case KEYPAD_BUTTON_RELEASED:
+			if(previous_sample[current_row][col_itr] != KEYPAD_ASSERTION_LEVEL &&
+					current_sample == KEYPAD_ASSERTION_LEVEL)
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_MAY_BE_PRESSED;
+ 754:	11 e0       	ldi	r17, 0x01	; 1
+			break;
+		case KEYPAD_BUTTON_PRESSED:
+			if(previous_sample[current_row][col_itr] == KEYPAD_ASSERTION_LEVEL &&
+					current_sample != KEYPAD_ASSERTION_LEVEL)
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_MAY_BE_RELEASED;
+ 756:	d3 e0       	ldi	r29, 0x03	; 3
+	static char button_state[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {0};
+	static uint8_t previous_sample[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {0};
+
+	for(col_itr = KEYPAD_COL_NO_0; col_itr < KEYPAD_COL_NO ; col_itr++)
+	{
+		uint8_t current_sample = DIO_ReadPin(KEYPAD_PORT,col_itr + KEYPAD_ROW_NO);
+ 758:	64 e0       	ldi	r22, 0x04	; 4
+ 75a:	6c 0f       	add	r22, r28
+ 75c:	82 e0       	ldi	r24, 0x02	; 2
+ 75e:	0e 94 74 03 	call	0x6e8	; 0x6e8 <DIO_ReadPin>
+
+		switch(button_state[current_row][col_itr])
+ 762:	60 91 ce 00 	lds	r22, 0x00CE	; 0x8000ce <current_row.2023>
+ 766:	26 2f       	mov	r18, r22
+ 768:	30 e0       	ldi	r19, 0x00	; 0
+ 76a:	4c 2f       	mov	r20, r28
+ 76c:	50 e0       	ldi	r21, 0x00	; 0
+ 76e:	f9 01       	movw	r30, r18
+ 770:	ee 0f       	add	r30, r30
+ 772:	ff 1f       	adc	r31, r31
+ 774:	e2 0f       	add	r30, r18
+ 776:	f3 1f       	adc	r31, r19
+ 778:	ee 53       	subi	r30, 0x3E	; 62
+ 77a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 77c:	e4 0f       	add	r30, r20
+ 77e:	f5 1f       	adc	r31, r21
+ 780:	90 81       	ld	r25, Z
+ 782:	91 30       	cpi	r25, 0x01	; 1
+ 784:	11 f1       	breq	.+68     	; 0x7ca <Keypad_Update+0x7e>
+ 786:	38 f0       	brcs	.+14     	; 0x796 <Keypad_Update+0x4a>
+ 788:	92 30       	cpi	r25, 0x02	; 2
+ 78a:	09 f4       	brne	.+2      	; 0x78e <Keypad_Update+0x42>
+ 78c:	58 c0       	rjmp	.+176    	; 0x83e <Keypad_Update+0xf2>
+ 78e:	93 30       	cpi	r25, 0x03	; 3
+ 790:	09 f4       	brne	.+2      	; 0x794 <Keypad_Update+0x48>
+ 792:	6e c0       	rjmp	.+220    	; 0x870 <__stack+0x11>
+ 794:	85 c0       	rjmp	.+266    	; 0x8a0 <__stack+0x41>
+		{
+		case KEYPAD_BUTTON_RELEASED:
+			if(previous_sample[current_row][col_itr] != KEYPAD_ASSERTION_LEVEL &&
+ 796:	f9 01       	movw	r30, r18
+ 798:	ee 0f       	add	r30, r30
+ 79a:	ff 1f       	adc	r31, r31
+ 79c:	e2 0f       	add	r30, r18
+ 79e:	f3 1f       	adc	r31, r19
+ 7a0:	ea 54       	subi	r30, 0x4A	; 74
+ 7a2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 7a4:	e4 0f       	add	r30, r20
+ 7a6:	f5 1f       	adc	r31, r21
+ 7a8:	90 81       	ld	r25, Z
+ 7aa:	99 23       	and	r25, r25
+ 7ac:	09 f4       	brne	.+2      	; 0x7b0 <Keypad_Update+0x64>
+ 7ae:	78 c0       	rjmp	.+240    	; 0x8a0 <__stack+0x41>
+ 7b0:	81 11       	cpse	r24, r1
+ 7b2:	76 c0       	rjmp	.+236    	; 0x8a0 <__stack+0x41>
+					current_sample == KEYPAD_ASSERTION_LEVEL)
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_MAY_BE_PRESSED;
+ 7b4:	f9 01       	movw	r30, r18
+ 7b6:	ee 0f       	add	r30, r30
+ 7b8:	ff 1f       	adc	r31, r31
+ 7ba:	e2 0f       	add	r30, r18
+ 7bc:	f3 1f       	adc	r31, r19
+ 7be:	ee 53       	subi	r30, 0x3E	; 62
+ 7c0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 7c2:	e4 0f       	add	r30, r20
+ 7c4:	f5 1f       	adc	r31, r21
+ 7c6:	10 83       	st	Z, r17
+ 7c8:	6b c0       	rjmp	.+214    	; 0x8a0 <__stack+0x41>
+			}
+			break;
+		case KEYPAD_BUTTON_MAY_BE_PRESSED:
+			if(current_sample == KEYPAD_ASSERTION_LEVEL)
+ 7ca:	81 11       	cpse	r24, r1
+ 7cc:	2d c0       	rjmp	.+90     	; 0x828 <Keypad_Update+0xdc>
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_PRESSED;
+ 7ce:	f9 01       	movw	r30, r18
+ 7d0:	ee 0f       	add	r30, r30
+ 7d2:	ff 1f       	adc	r31, r31
+ 7d4:	e2 0f       	add	r30, r18
+ 7d6:	f3 1f       	adc	r31, r19
+ 7d8:	df 01       	movw	r26, r30
+ 7da:	ae 53       	subi	r26, 0x3E	; 62
+ 7dc:	bf 4f       	sbci	r27, 0xFF	; 255
+ 7de:	a4 0f       	add	r26, r20
+ 7e0:	b5 1f       	adc	r27, r21
+ 7e2:	82 e0       	ldi	r24, 0x02	; 2
+ 7e4:	8c 93       	st	X, r24
+				key = Keypad_Char[current_row][col_itr];
+ 7e6:	e2 58       	subi	r30, 0x82	; 130
+ 7e8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 7ea:	e4 0f       	add	r30, r20
+ 7ec:	f5 1f       	adc	r31, r21
+ 7ee:	c0 81       	ld	r28, Z
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_PRESSED;
+			}
+			break;
+		}
+
+		previous_sample[current_row][col_itr] = current_sample;
+ 7f0:	2f 5f       	subi	r18, 0xFF	; 255
+ 7f2:	3f 4f       	sbci	r19, 0xFF	; 255
+ 7f4:	f9 01       	movw	r30, r18
+ 7f6:	ee 0f       	add	r30, r30
+ 7f8:	ff 1f       	adc	r31, r31
+ 7fa:	2e 0f       	add	r18, r30
+ 7fc:	3f 1f       	adc	r19, r31
+ 7fe:	f9 01       	movw	r30, r18
+ 800:	ea 54       	subi	r30, 0x4A	; 74
+ 802:	ff 4f       	sbci	r31, 0xFF	; 255
+ 804:	10 82       	st	Z, r1
+	}
+
+	DIO_WritePin(KEYPAD_PORT,current_row,(KEYPAD_ASSERTION_LEVEL ^ 0x01));
+ 806:	41 e0       	ldi	r20, 0x01	; 1
+ 808:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+
+	current_row++;
+
+	current_row %= KEYPAD_ROW_NO;
+ 80c:	60 91 ce 00 	lds	r22, 0x00CE	; 0x8000ce <current_row.2023>
+ 810:	6f 5f       	subi	r22, 0xFF	; 255
+ 812:	63 70       	andi	r22, 0x03	; 3
+ 814:	60 93 ce 00 	sts	0x00CE, r22	; 0x8000ce <current_row.2023>
+
+	/*become next_row*/
+	DIO_WritePin(KEYPAD_PORT,current_row,KEYPAD_ASSERTION_LEVEL);
+ 818:	40 e0       	ldi	r20, 0x00	; 0
+ 81a:	82 e0       	ldi	r24, 0x02	; 2
+ 81c:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+
+	/*Allocate space for pressed key and queue it*/
+	if(key != 0)
+ 820:	cc 23       	and	r28, r28
+ 822:	09 f4       	brne	.+2      	; 0x826 <Keypad_Update+0xda>
+ 824:	6b c0       	rjmp	.+214    	; 0x8fc <__stack+0x9d>
+ 826:	4c c0       	rjmp	.+152    	; 0x8c0 <__stack+0x61>
+				key = Keypad_Char[current_row][col_itr];
+				col_itr = KEYPAD_COL_NO; /*break outer loop*/
+			}
+			else
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_RELEASED;
+ 828:	f9 01       	movw	r30, r18
+ 82a:	ee 0f       	add	r30, r30
+ 82c:	ff 1f       	adc	r31, r31
+ 82e:	e2 0f       	add	r30, r18
+ 830:	f3 1f       	adc	r31, r19
+ 832:	ee 53       	subi	r30, 0x3E	; 62
+ 834:	ff 4f       	sbci	r31, 0xFF	; 255
+ 836:	e4 0f       	add	r30, r20
+ 838:	f5 1f       	adc	r31, r21
+ 83a:	10 82       	st	Z, r1
+ 83c:	31 c0       	rjmp	.+98     	; 0x8a0 <__stack+0x41>
+			}
+			break;
+		case KEYPAD_BUTTON_PRESSED:
+			if(previous_sample[current_row][col_itr] == KEYPAD_ASSERTION_LEVEL &&
+ 83e:	f9 01       	movw	r30, r18
+ 840:	ee 0f       	add	r30, r30
+ 842:	ff 1f       	adc	r31, r31
+ 844:	e2 0f       	add	r30, r18
+ 846:	f3 1f       	adc	r31, r19
+ 848:	ea 54       	subi	r30, 0x4A	; 74
+ 84a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 84c:	e4 0f       	add	r30, r20
+ 84e:	f5 1f       	adc	r31, r21
+ 850:	90 81       	ld	r25, Z
+ 852:	91 11       	cpse	r25, r1
+ 854:	25 c0       	rjmp	.+74     	; 0x8a0 <__stack+0x41>
+ 856:	88 23       	and	r24, r24
+ 858:	19 f1       	breq	.+70     	; 0x8a0 <__stack+0x41>
+					current_sample != KEYPAD_ASSERTION_LEVEL)
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_MAY_BE_RELEASED;
+ 85a:	f9 01       	movw	r30, r18
+ 85c:	ee 0f       	add	r30, r30
+ 85e:	ff 1f       	adc	r31, r31
+ 860:	e2 0f       	add	r30, r18
+ 862:	f3 1f       	adc	r31, r19
+ 864:	ee 53       	subi	r30, 0x3E	; 62
+ 866:	ff 4f       	sbci	r31, 0xFF	; 255
+ 868:	e4 0f       	add	r30, r20
+ 86a:	f5 1f       	adc	r31, r21
+ 86c:	d0 83       	st	Z, r29
+ 86e:	18 c0       	rjmp	.+48     	; 0x8a0 <__stack+0x41>
+			}
+			break;
+		case KEYPAD_BUTTON_MAY_BE_RELEASED:
+			if(current_sample != KEYPAD_ASSERTION_LEVEL)
+ 870:	88 23       	and	r24, r24
+ 872:	59 f0       	breq	.+22     	; 0x88a <__stack+0x2b>
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_RELEASED;
+ 874:	f9 01       	movw	r30, r18
+ 876:	ee 0f       	add	r30, r30
+ 878:	ff 1f       	adc	r31, r31
+ 87a:	e2 0f       	add	r30, r18
+ 87c:	f3 1f       	adc	r31, r19
+ 87e:	ee 53       	subi	r30, 0x3E	; 62
+ 880:	ff 4f       	sbci	r31, 0xFF	; 255
+ 882:	e4 0f       	add	r30, r20
+ 884:	f5 1f       	adc	r31, r21
+ 886:	10 82       	st	Z, r1
+ 888:	0b c0       	rjmp	.+22     	; 0x8a0 <__stack+0x41>
+			}
+			else
+			{
+				button_state[current_row][col_itr] = KEYPAD_BUTTON_PRESSED;
+ 88a:	f9 01       	movw	r30, r18
+ 88c:	ee 0f       	add	r30, r30
+ 88e:	ff 1f       	adc	r31, r31
+ 890:	e2 0f       	add	r30, r18
+ 892:	f3 1f       	adc	r31, r19
+ 894:	ee 53       	subi	r30, 0x3E	; 62
+ 896:	ff 4f       	sbci	r31, 0xFF	; 255
+ 898:	e4 0f       	add	r30, r20
+ 89a:	f5 1f       	adc	r31, r21
+ 89c:	92 e0       	ldi	r25, 0x02	; 2
+ 89e:	90 83       	st	Z, r25
+			}
+			break;
+		}
+
+		previous_sample[current_row][col_itr] = current_sample;
+ 8a0:	f9 01       	movw	r30, r18
+ 8a2:	ee 0f       	add	r30, r30
+ 8a4:	ff 1f       	adc	r31, r31
+ 8a6:	2e 0f       	add	r18, r30
+ 8a8:	3f 1f       	adc	r19, r31
+ 8aa:	2a 54       	subi	r18, 0x4A	; 74
+ 8ac:	3f 4f       	sbci	r19, 0xFF	; 255
+ 8ae:	f9 01       	movw	r30, r18
+ 8b0:	e4 0f       	add	r30, r20
+ 8b2:	f5 1f       	adc	r31, r21
+ 8b4:	80 83       	st	Z, r24
+
+	static tKeypad_Rows current_row = KEYPAD_ROW_NO_0;
+	static char button_state[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {0};
+	static uint8_t previous_sample[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {0};
+
+	for(col_itr = KEYPAD_COL_NO_0; col_itr < KEYPAD_COL_NO ; col_itr++)
+ 8b6:	cf 5f       	subi	r28, 0xFF	; 255
+ 8b8:	c3 30       	cpi	r28, 0x03	; 3
+ 8ba:	08 f4       	brcc	.+2      	; 0x8be <__stack+0x5f>
+ 8bc:	4d cf       	rjmp	.-358    	; 0x758 <Keypad_Update+0xc>
+ 8be:	10 c0       	rjmp	.+32     	; 0x8e0 <__stack+0x81>
+	DIO_WritePin(KEYPAD_PORT,current_row,KEYPAD_ASSERTION_LEVEL);
+
+	/*Allocate space for pressed key and queue it*/
+	if(key != 0)
+	{
+		char_ptr = malloc(sizeof(char));
+ 8c0:	81 e0       	ldi	r24, 0x01	; 1
+ 8c2:	90 e0       	ldi	r25, 0x00	; 0
+ 8c4:	0e 94 09 05 	call	0xa12	; 0xa12 <malloc>
+		if(char_ptr != 0)
+ 8c8:	00 97       	sbiw	r24, 0x00	; 0
+ 8ca:	c1 f0       	breq	.+48     	; 0x8fc <__stack+0x9d>
+		{
+			*char_ptr = key;
+ 8cc:	fc 01       	movw	r30, r24
+ 8ce:	c0 83       	st	Z, r28
+
+			if(Queue_Enqueue(Keypad_Buffer,char_ptr))
+ 8d0:	bc 01       	movw	r22, r24
+ 8d2:	80 91 cf 00 	lds	r24, 0x00CF	; 0x8000cf <Keypad_Buffer>
+ 8d6:	90 91 d0 00 	lds	r25, 0x00D0	; 0x8000d0 <Keypad_Buffer+0x1>
+ 8da:	0e 94 68 02 	call	0x4d0	; 0x4d0 <Queue_Enqueue>
+			{
+
+			}
+		}
+	}
+}
+ 8de:	0e c0       	rjmp	.+28     	; 0x8fc <__stack+0x9d>
+		}
+
+		previous_sample[current_row][col_itr] = current_sample;
+	}
+
+	DIO_WritePin(KEYPAD_PORT,current_row,(KEYPAD_ASSERTION_LEVEL ^ 0x01));
+ 8e0:	41 e0       	ldi	r20, 0x01	; 1
+ 8e2:	82 e0       	ldi	r24, 0x02	; 2
+ 8e4:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+
+	current_row++;
+
+	current_row %= KEYPAD_ROW_NO;
+ 8e8:	60 91 ce 00 	lds	r22, 0x00CE	; 0x8000ce <current_row.2023>
+ 8ec:	6f 5f       	subi	r22, 0xFF	; 255
+ 8ee:	63 70       	andi	r22, 0x03	; 3
+ 8f0:	60 93 ce 00 	sts	0x00CE, r22	; 0x8000ce <current_row.2023>
+
+	/*become next_row*/
+	DIO_WritePin(KEYPAD_PORT,current_row,KEYPAD_ASSERTION_LEVEL);
+ 8f4:	40 e0       	ldi	r20, 0x00	; 0
+ 8f6:	82 e0       	ldi	r24, 0x02	; 2
+ 8f8:	0e 94 57 03 	call	0x6ae	; 0x6ae <DIO_WritePin>
+			{
+
+			}
+		}
+	}
+}
+ 8fc:	df 91       	pop	r29
+ 8fe:	cf 91       	pop	r28
+ 900:	1f 91       	pop	r17
+ 902:	08 95       	ret
+
+00000904 <Keypad_Init>:
+		{'7','8','9'},
+		{'*','0','#'}
+};
+
+void Keypad_Init(void)
+{
+ 904:	af 92       	push	r10
+ 906:	cf 92       	push	r12
+ 908:	ef 92       	push	r14
+ 90a:	ff 92       	push	r15
+ 90c:	0f 93       	push	r16
+ 90e:	1f 93       	push	r17
+	DIO_ConfigPort(KEYPAD_PORT,0x0f,DIO_OUTPUT);
+ 910:	41 e0       	ldi	r20, 0x01	; 1
+ 912:	6f e0       	ldi	r22, 0x0F	; 15
+ 914:	82 e0       	ldi	r24, 0x02	; 2
+ 916:	0e 94 43 03 	call	0x686	; 0x686 <DIO_ConfigPort>
+	DIO_WritePort(KEYPAD_PORT,0x0f,0x0f);
+ 91a:	4f e0       	ldi	r20, 0x0F	; 15
+ 91c:	6f e0       	ldi	r22, 0x0F	; 15
+ 91e:	82 e0       	ldi	r24, 0x02	; 2
+ 920:	0e 94 8f 03 	call	0x71e	; 0x71e <DIO_WritePort>
+	DIO_ConfigPort(KEYPAD_PORT,0x70,DIO_INPUT);
+ 924:	40 e0       	ldi	r20, 0x00	; 0
+ 926:	60 e7       	ldi	r22, 0x70	; 112
+ 928:	82 e0       	ldi	r24, 0x02	; 2
+ 92a:	0e 94 43 03 	call	0x686	; 0x686 <DIO_ConfigPort>
+	DIO_WritePort(KEYPAD_PORT,0x70,0x70);
+ 92e:	40 e7       	ldi	r20, 0x70	; 112
+ 930:	60 e7       	ldi	r22, 0x70	; 112
+ 932:	82 e0       	ldi	r24, 0x02	; 2
+ 934:	0e 94 8f 03 	call	0x71e	; 0x71e <DIO_WritePort>
+
+	Keypad_Buffer = Queue_Create(QUEUE_TYPE_CHAR_PTR);
+ 938:	80 e0       	ldi	r24, 0x00	; 0
+ 93a:	0e 94 51 02 	call	0x4a2	; 0x4a2 <Queue_Create>
+ 93e:	90 93 d0 00 	sts	0x00D0, r25	; 0x8000d0 <Keypad_Buffer+0x1>
+ 942:	80 93 cf 00 	sts	0x00CF, r24	; 0x8000cf <Keypad_Buffer>
+
+	if(Keypad_Buffer == 0)
+ 946:	89 2b       	or	r24, r25
+ 948:	09 f4       	brne	.+2      	; 0x94c <Keypad_Init+0x48>
+ 94a:	ff cf       	rjmp	.-2      	; 0x94a <Keypad_Init+0x46>
+		while(1);
+
+	OS_AddTask(0,Keypad_Update,5,0,0,TASK_STATE_NOT_READY);
+ 94c:	a1 2c       	mov	r10, r1
+ 94e:	c1 2c       	mov	r12, r1
+ 950:	e1 2c       	mov	r14, r1
+ 952:	f1 2c       	mov	r15, r1
+ 954:	87 01       	movw	r16, r14
+ 956:	25 e0       	ldi	r18, 0x05	; 5
+ 958:	30 e0       	ldi	r19, 0x00	; 0
+ 95a:	40 e0       	ldi	r20, 0x00	; 0
+ 95c:	50 e0       	ldi	r21, 0x00	; 0
+ 95e:	66 ea       	ldi	r22, 0xA6	; 166
+ 960:	73 e0       	ldi	r23, 0x03	; 3
+ 962:	80 e0       	ldi	r24, 0x00	; 0
+ 964:	0e 94 5f 01 	call	0x2be	; 0x2be <OS_AddTask>
+}
+ 968:	1f 91       	pop	r17
+ 96a:	0f 91       	pop	r16
+ 96c:	ff 90       	pop	r15
+ 96e:	ef 90       	pop	r14
+ 970:	cf 90       	pop	r12
+ 972:	af 90       	pop	r10
+ 974:	08 95       	ret
+
+00000976 <Keypad_GetChar>:
+			}
+		}
+	}
+}
+char Keypad_GetChar(void)
+{
+ 976:	1f 93       	push	r17
+ 978:	cf 93       	push	r28
+ 97a:	df 93       	push	r29
+ 97c:	00 d0       	rcall	.+0      	; 0x97e <Keypad_GetChar+0x8>
+ 97e:	cd b7       	in	r28, 0x3d	; 61
+ 980:	de b7       	in	r29, 0x3e	; 62
+	char ret_char = 0;
+	void *ret_char_ptr = 0;
+ 982:	1a 82       	std	Y+2, r1	; 0x02
+ 984:	19 82       	std	Y+1, r1	; 0x01
+
+	if(Queue_Dequeue(Keypad_Buffer,&ret_char_ptr))
+ 986:	be 01       	movw	r22, r28
+ 988:	6f 5f       	subi	r22, 0xFF	; 255
+ 98a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 98c:	80 91 cf 00 	lds	r24, 0x00CF	; 0x8000cf <Keypad_Buffer>
+ 990:	90 91 d0 00 	lds	r25, 0x00D0	; 0x8000d0 <Keypad_Buffer+0x1>
+ 994:	0e 94 83 02 	call	0x506	; 0x506 <Queue_Dequeue>
+ 998:	88 23       	and	r24, r24
+ 99a:	39 f0       	breq	.+14     	; 0x9aa <Keypad_GetChar+0x34>
+	{
+		ret_char = *((char*)ret_char_ptr);
+ 99c:	89 81       	ldd	r24, Y+1	; 0x01
+ 99e:	9a 81       	ldd	r25, Y+2	; 0x02
+ 9a0:	fc 01       	movw	r30, r24
+ 9a2:	10 81       	ld	r17, Z
+		free(ret_char_ptr);
+ 9a4:	0e 94 a1 05 	call	0xb42	; 0xb42 <free>
+ 9a8:	01 c0       	rjmp	.+2      	; 0x9ac <Keypad_GetChar+0x36>
+		}
+	}
+}
+char Keypad_GetChar(void)
+{
+	char ret_char = 0;
+ 9aa:	10 e0       	ldi	r17, 0x00	; 0
+		ret_char = *((char*)ret_char_ptr);
+		free(ret_char_ptr);
+	}
+
+	return ret_char;
+}
+ 9ac:	81 2f       	mov	r24, r17
+ 9ae:	0f 90       	pop	r0
+ 9b0:	0f 90       	pop	r0
+ 9b2:	df 91       	pop	r29
+ 9b4:	cf 91       	pop	r28
+ 9b6:	1f 91       	pop	r17
+ 9b8:	08 95       	ret
+
+000009ba <app>:
+#include "LCD.h"
+#include "keypad.h"
+#include "dio.h"
+
+void app(void)
+{
+ 9ba:	cf 93       	push	r28
+	char pressed_key = Keypad_GetChar();
+ 9bc:	0e 94 bb 04 	call	0x976	; 0x976 <Keypad_GetChar>
+ 9c0:	c8 2f       	mov	r28, r24
+
+	if(pressed_key != 0)
+ 9c2:	88 23       	and	r24, r24
+ 9c4:	61 f0       	breq	.+24     	; 0x9de <app+0x24>
+	{
+		LCD_ClearScreen();
+ 9c6:	0e 94 e1 00 	call	0x1c2	; 0x1c2 <LCD_ClearScreen>
+		LCD_SetCursor(0,0);
+ 9ca:	60 e0       	ldi	r22, 0x00	; 0
+ 9cc:	80 e0       	ldi	r24, 0x00	; 0
+ 9ce:	0e 94 d3 00 	call	0x1a6	; 0x1a6 <LCD_SetCursor>
+		LCD_WriteChar(pressed_key);
+ 9d2:	8c 2f       	mov	r24, r28
+ 9d4:	0e 94 a5 00 	call	0x14a	; 0x14a <LCD_WriteChar>
+		PORTD ^= 1 << 7;
+ 9d8:	82 b3       	in	r24, 0x12	; 18
+ 9da:	80 58       	subi	r24, 0x80	; 128
+ 9dc:	82 bb       	out	0x12, r24	; 18
+	}
+}
+ 9de:	cf 91       	pop	r28
+ 9e0:	08 95       	ret
+
+000009e2 <main>:
+
+int main(void)
+{
+	DDRD |= 1 << 7;
+ 9e2:	8f 9a       	sbi	0x11, 7	; 17
+	Keypad_Init();
+ 9e4:	0e 94 82 04 	call	0x904	; 0x904 <Keypad_Init>
+	LCD_Init();
+ 9e8:	0e 94 7b 00 	call	0xf6	; 0xf6 <LCD_Init>
+	OS_AddTask(1,app,5,0,0,TASK_STATE_NOT_READY);
+ 9ec:	a1 2c       	mov	r10, r1
+ 9ee:	c1 2c       	mov	r12, r1
+ 9f0:	e1 2c       	mov	r14, r1
+ 9f2:	f1 2c       	mov	r15, r1
+ 9f4:	87 01       	movw	r16, r14
+ 9f6:	25 e0       	ldi	r18, 0x05	; 5
+ 9f8:	30 e0       	ldi	r19, 0x00	; 0
+ 9fa:	40 e0       	ldi	r20, 0x00	; 0
+ 9fc:	50 e0       	ldi	r21, 0x00	; 0
+ 9fe:	6d ed       	ldi	r22, 0xDD	; 221
+ a00:	74 e0       	ldi	r23, 0x04	; 4
+ a02:	81 e0       	ldi	r24, 0x01	; 1
+ a04:	0e 94 5f 01 	call	0x2be	; 0x2be <OS_AddTask>
+	OS_Init();
+ a08:	0e 94 00 01 	call	0x200	; 0x200 <OS_Init>
+
+    while(1)
+    {
+    	OS_DispatchTasks();
+ a0c:	0e 94 1b 02 	call	0x436	; 0x436 <OS_DispatchTasks>
+ a10:	fd cf       	rjmp	.-6      	; 0xa0c <main+0x2a>
+
+00000a12 <malloc>:
+ a12:	0f 93       	push	r16
+ a14:	1f 93       	push	r17
+ a16:	cf 93       	push	r28
+ a18:	df 93       	push	r29
+ a1a:	82 30       	cpi	r24, 0x02	; 2
+ a1c:	91 05       	cpc	r25, r1
+ a1e:	10 f4       	brcc	.+4      	; 0xa24 <malloc+0x12>
+ a20:	82 e0       	ldi	r24, 0x02	; 2
+ a22:	90 e0       	ldi	r25, 0x00	; 0
+ a24:	e0 91 d3 00 	lds	r30, 0x00D3	; 0x8000d3 <__flp>
+ a28:	f0 91 d4 00 	lds	r31, 0x00D4	; 0x8000d4 <__flp+0x1>
+ a2c:	20 e0       	ldi	r18, 0x00	; 0
+ a2e:	30 e0       	ldi	r19, 0x00	; 0
+ a30:	a0 e0       	ldi	r26, 0x00	; 0
+ a32:	b0 e0       	ldi	r27, 0x00	; 0
+ a34:	30 97       	sbiw	r30, 0x00	; 0
+ a36:	19 f1       	breq	.+70     	; 0xa7e <malloc+0x6c>
+ a38:	40 81       	ld	r20, Z
+ a3a:	51 81       	ldd	r21, Z+1	; 0x01
+ a3c:	02 81       	ldd	r16, Z+2	; 0x02
+ a3e:	13 81       	ldd	r17, Z+3	; 0x03
+ a40:	48 17       	cp	r20, r24
+ a42:	59 07       	cpc	r21, r25
+ a44:	c8 f0       	brcs	.+50     	; 0xa78 <malloc+0x66>
+ a46:	84 17       	cp	r24, r20
+ a48:	95 07       	cpc	r25, r21
+ a4a:	69 f4       	brne	.+26     	; 0xa66 <malloc+0x54>
+ a4c:	10 97       	sbiw	r26, 0x00	; 0
+ a4e:	31 f0       	breq	.+12     	; 0xa5c <malloc+0x4a>
+ a50:	12 96       	adiw	r26, 0x02	; 2
+ a52:	0c 93       	st	X, r16
+ a54:	12 97       	sbiw	r26, 0x02	; 2
+ a56:	13 96       	adiw	r26, 0x03	; 3
+ a58:	1c 93       	st	X, r17
+ a5a:	27 c0       	rjmp	.+78     	; 0xaaa <malloc+0x98>
+ a5c:	00 93 d3 00 	sts	0x00D3, r16	; 0x8000d3 <__flp>
+ a60:	10 93 d4 00 	sts	0x00D4, r17	; 0x8000d4 <__flp+0x1>
+ a64:	22 c0       	rjmp	.+68     	; 0xaaa <malloc+0x98>
+ a66:	21 15       	cp	r18, r1
+ a68:	31 05       	cpc	r19, r1
+ a6a:	19 f0       	breq	.+6      	; 0xa72 <malloc+0x60>
+ a6c:	42 17       	cp	r20, r18
+ a6e:	53 07       	cpc	r21, r19
+ a70:	18 f4       	brcc	.+6      	; 0xa78 <malloc+0x66>
+ a72:	9a 01       	movw	r18, r20
+ a74:	bd 01       	movw	r22, r26
+ a76:	ef 01       	movw	r28, r30
+ a78:	df 01       	movw	r26, r30
+ a7a:	f8 01       	movw	r30, r16
+ a7c:	db cf       	rjmp	.-74     	; 0xa34 <malloc+0x22>
+ a7e:	21 15       	cp	r18, r1
+ a80:	31 05       	cpc	r19, r1
+ a82:	f9 f0       	breq	.+62     	; 0xac2 <malloc+0xb0>
+ a84:	28 1b       	sub	r18, r24
+ a86:	39 0b       	sbc	r19, r25
+ a88:	24 30       	cpi	r18, 0x04	; 4
+ a8a:	31 05       	cpc	r19, r1
+ a8c:	80 f4       	brcc	.+32     	; 0xaae <malloc+0x9c>
+ a8e:	8a 81       	ldd	r24, Y+2	; 0x02
+ a90:	9b 81       	ldd	r25, Y+3	; 0x03
+ a92:	61 15       	cp	r22, r1
+ a94:	71 05       	cpc	r23, r1
+ a96:	21 f0       	breq	.+8      	; 0xaa0 <malloc+0x8e>
+ a98:	fb 01       	movw	r30, r22
+ a9a:	93 83       	std	Z+3, r25	; 0x03
+ a9c:	82 83       	std	Z+2, r24	; 0x02
+ a9e:	04 c0       	rjmp	.+8      	; 0xaa8 <malloc+0x96>
+ aa0:	90 93 d4 00 	sts	0x00D4, r25	; 0x8000d4 <__flp+0x1>
+ aa4:	80 93 d3 00 	sts	0x00D3, r24	; 0x8000d3 <__flp>
+ aa8:	fe 01       	movw	r30, r28
+ aaa:	32 96       	adiw	r30, 0x02	; 2
+ aac:	44 c0       	rjmp	.+136    	; 0xb36 <malloc+0x124>
+ aae:	fe 01       	movw	r30, r28
+ ab0:	e2 0f       	add	r30, r18
+ ab2:	f3 1f       	adc	r31, r19
+ ab4:	81 93       	st	Z+, r24
+ ab6:	91 93       	st	Z+, r25
+ ab8:	22 50       	subi	r18, 0x02	; 2
+ aba:	31 09       	sbc	r19, r1
+ abc:	39 83       	std	Y+1, r19	; 0x01
+ abe:	28 83       	st	Y, r18
+ ac0:	3a c0       	rjmp	.+116    	; 0xb36 <malloc+0x124>
+ ac2:	20 91 d1 00 	lds	r18, 0x00D1	; 0x8000d1 <__brkval>
+ ac6:	30 91 d2 00 	lds	r19, 0x00D2	; 0x8000d2 <__brkval+0x1>
+ aca:	23 2b       	or	r18, r19
+ acc:	41 f4       	brne	.+16     	; 0xade <malloc+0xcc>
+ ace:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__malloc_heap_start>
+ ad2:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <__malloc_heap_start+0x1>
+ ad6:	30 93 d2 00 	sts	0x00D2, r19	; 0x8000d2 <__brkval+0x1>
+ ada:	20 93 d1 00 	sts	0x00D1, r18	; 0x8000d1 <__brkval>
+ ade:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__data_start>
+ ae2:	30 91 61 00 	lds	r19, 0x0061	; 0x800061 <__data_start+0x1>
+ ae6:	21 15       	cp	r18, r1
+ ae8:	31 05       	cpc	r19, r1
+ aea:	41 f4       	brne	.+16     	; 0xafc <malloc+0xea>
+ aec:	2d b7       	in	r18, 0x3d	; 61
+ aee:	3e b7       	in	r19, 0x3e	; 62
+ af0:	40 91 64 00 	lds	r20, 0x0064	; 0x800064 <__malloc_margin>
+ af4:	50 91 65 00 	lds	r21, 0x0065	; 0x800065 <__malloc_margin+0x1>
+ af8:	24 1b       	sub	r18, r20
+ afa:	35 0b       	sbc	r19, r21
+ afc:	e0 91 d1 00 	lds	r30, 0x00D1	; 0x8000d1 <__brkval>
+ b00:	f0 91 d2 00 	lds	r31, 0x00D2	; 0x8000d2 <__brkval+0x1>
+ b04:	e2 17       	cp	r30, r18
+ b06:	f3 07       	cpc	r31, r19
+ b08:	a0 f4       	brcc	.+40     	; 0xb32 <malloc+0x120>
+ b0a:	2e 1b       	sub	r18, r30
+ b0c:	3f 0b       	sbc	r19, r31
+ b0e:	28 17       	cp	r18, r24
+ b10:	39 07       	cpc	r19, r25
+ b12:	78 f0       	brcs	.+30     	; 0xb32 <malloc+0x120>
+ b14:	ac 01       	movw	r20, r24
+ b16:	4e 5f       	subi	r20, 0xFE	; 254
+ b18:	5f 4f       	sbci	r21, 0xFF	; 255
+ b1a:	24 17       	cp	r18, r20
+ b1c:	35 07       	cpc	r19, r21
+ b1e:	48 f0       	brcs	.+18     	; 0xb32 <malloc+0x120>
+ b20:	4e 0f       	add	r20, r30
+ b22:	5f 1f       	adc	r21, r31
+ b24:	50 93 d2 00 	sts	0x00D2, r21	; 0x8000d2 <__brkval+0x1>
+ b28:	40 93 d1 00 	sts	0x00D1, r20	; 0x8000d1 <__brkval>
+ b2c:	81 93       	st	Z+, r24
+ b2e:	91 93       	st	Z+, r25
+ b30:	02 c0       	rjmp	.+4      	; 0xb36 <malloc+0x124>
+ b32:	e0 e0       	ldi	r30, 0x00	; 0
+ b34:	f0 e0       	ldi	r31, 0x00	; 0
+ b36:	cf 01       	movw	r24, r30
+ b38:	df 91       	pop	r29
+ b3a:	cf 91       	pop	r28
+ b3c:	1f 91       	pop	r17
+ b3e:	0f 91       	pop	r16
+ b40:	08 95       	ret
+
+00000b42 <free>:
+ b42:	cf 93       	push	r28
+ b44:	df 93       	push	r29
+ b46:	00 97       	sbiw	r24, 0x00	; 0
+ b48:	09 f4       	brne	.+2      	; 0xb4c <free+0xa>
+ b4a:	81 c0       	rjmp	.+258    	; 0xc4e <free+0x10c>
+ b4c:	fc 01       	movw	r30, r24
+ b4e:	32 97       	sbiw	r30, 0x02	; 2
+ b50:	13 82       	std	Z+3, r1	; 0x03
+ b52:	12 82       	std	Z+2, r1	; 0x02
+ b54:	a0 91 d3 00 	lds	r26, 0x00D3	; 0x8000d3 <__flp>
+ b58:	b0 91 d4 00 	lds	r27, 0x00D4	; 0x8000d4 <__flp+0x1>
+ b5c:	10 97       	sbiw	r26, 0x00	; 0
+ b5e:	81 f4       	brne	.+32     	; 0xb80 <free+0x3e>
+ b60:	20 81       	ld	r18, Z
+ b62:	31 81       	ldd	r19, Z+1	; 0x01
+ b64:	82 0f       	add	r24, r18
+ b66:	93 1f       	adc	r25, r19
+ b68:	20 91 d1 00 	lds	r18, 0x00D1	; 0x8000d1 <__brkval>
+ b6c:	30 91 d2 00 	lds	r19, 0x00D2	; 0x8000d2 <__brkval+0x1>
+ b70:	28 17       	cp	r18, r24
+ b72:	39 07       	cpc	r19, r25
+ b74:	51 f5       	brne	.+84     	; 0xbca <free+0x88>
+ b76:	f0 93 d2 00 	sts	0x00D2, r31	; 0x8000d2 <__brkval+0x1>
+ b7a:	e0 93 d1 00 	sts	0x00D1, r30	; 0x8000d1 <__brkval>
+ b7e:	67 c0       	rjmp	.+206    	; 0xc4e <free+0x10c>
+ b80:	ed 01       	movw	r28, r26
+ b82:	20 e0       	ldi	r18, 0x00	; 0
+ b84:	30 e0       	ldi	r19, 0x00	; 0
+ b86:	ce 17       	cp	r28, r30
+ b88:	df 07       	cpc	r29, r31
+ b8a:	40 f4       	brcc	.+16     	; 0xb9c <free+0x5a>
+ b8c:	4a 81       	ldd	r20, Y+2	; 0x02
+ b8e:	5b 81       	ldd	r21, Y+3	; 0x03
+ b90:	9e 01       	movw	r18, r28
+ b92:	41 15       	cp	r20, r1
+ b94:	51 05       	cpc	r21, r1
+ b96:	f1 f0       	breq	.+60     	; 0xbd4 <free+0x92>
+ b98:	ea 01       	movw	r28, r20
+ b9a:	f5 cf       	rjmp	.-22     	; 0xb86 <free+0x44>
+ b9c:	d3 83       	std	Z+3, r29	; 0x03
+ b9e:	c2 83       	std	Z+2, r28	; 0x02
+ ba0:	40 81       	ld	r20, Z
+ ba2:	51 81       	ldd	r21, Z+1	; 0x01
+ ba4:	84 0f       	add	r24, r20
+ ba6:	95 1f       	adc	r25, r21
+ ba8:	c8 17       	cp	r28, r24
+ baa:	d9 07       	cpc	r29, r25
+ bac:	59 f4       	brne	.+22     	; 0xbc4 <free+0x82>
+ bae:	88 81       	ld	r24, Y
+ bb0:	99 81       	ldd	r25, Y+1	; 0x01
+ bb2:	84 0f       	add	r24, r20
+ bb4:	95 1f       	adc	r25, r21
+ bb6:	02 96       	adiw	r24, 0x02	; 2
+ bb8:	91 83       	std	Z+1, r25	; 0x01
+ bba:	80 83       	st	Z, r24
+ bbc:	8a 81       	ldd	r24, Y+2	; 0x02
+ bbe:	9b 81       	ldd	r25, Y+3	; 0x03
+ bc0:	93 83       	std	Z+3, r25	; 0x03
+ bc2:	82 83       	std	Z+2, r24	; 0x02
+ bc4:	21 15       	cp	r18, r1
+ bc6:	31 05       	cpc	r19, r1
+ bc8:	29 f4       	brne	.+10     	; 0xbd4 <free+0x92>
+ bca:	f0 93 d4 00 	sts	0x00D4, r31	; 0x8000d4 <__flp+0x1>
+ bce:	e0 93 d3 00 	sts	0x00D3, r30	; 0x8000d3 <__flp>
+ bd2:	3d c0       	rjmp	.+122    	; 0xc4e <free+0x10c>
+ bd4:	e9 01       	movw	r28, r18
+ bd6:	fb 83       	std	Y+3, r31	; 0x03
+ bd8:	ea 83       	std	Y+2, r30	; 0x02
+ bda:	49 91       	ld	r20, Y+
+ bdc:	59 91       	ld	r21, Y+
+ bde:	c4 0f       	add	r28, r20
+ be0:	d5 1f       	adc	r29, r21
+ be2:	ec 17       	cp	r30, r28
+ be4:	fd 07       	cpc	r31, r29
+ be6:	61 f4       	brne	.+24     	; 0xc00 <free+0xbe>
+ be8:	80 81       	ld	r24, Z
+ bea:	91 81       	ldd	r25, Z+1	; 0x01
+ bec:	84 0f       	add	r24, r20
+ bee:	95 1f       	adc	r25, r21
+ bf0:	02 96       	adiw	r24, 0x02	; 2
+ bf2:	e9 01       	movw	r28, r18
+ bf4:	99 83       	std	Y+1, r25	; 0x01
+ bf6:	88 83       	st	Y, r24
+ bf8:	82 81       	ldd	r24, Z+2	; 0x02
+ bfa:	93 81       	ldd	r25, Z+3	; 0x03
+ bfc:	9b 83       	std	Y+3, r25	; 0x03
+ bfe:	8a 83       	std	Y+2, r24	; 0x02
+ c00:	e0 e0       	ldi	r30, 0x00	; 0
+ c02:	f0 e0       	ldi	r31, 0x00	; 0
+ c04:	12 96       	adiw	r26, 0x02	; 2
+ c06:	8d 91       	ld	r24, X+
+ c08:	9c 91       	ld	r25, X
+ c0a:	13 97       	sbiw	r26, 0x03	; 3
+ c0c:	00 97       	sbiw	r24, 0x00	; 0
+ c0e:	19 f0       	breq	.+6      	; 0xc16 <free+0xd4>
+ c10:	fd 01       	movw	r30, r26
+ c12:	dc 01       	movw	r26, r24
+ c14:	f7 cf       	rjmp	.-18     	; 0xc04 <free+0xc2>
+ c16:	8d 91       	ld	r24, X+
+ c18:	9c 91       	ld	r25, X
+ c1a:	11 97       	sbiw	r26, 0x01	; 1
+ c1c:	9d 01       	movw	r18, r26
+ c1e:	2e 5f       	subi	r18, 0xFE	; 254
+ c20:	3f 4f       	sbci	r19, 0xFF	; 255
+ c22:	82 0f       	add	r24, r18
+ c24:	93 1f       	adc	r25, r19
+ c26:	20 91 d1 00 	lds	r18, 0x00D1	; 0x8000d1 <__brkval>
+ c2a:	30 91 d2 00 	lds	r19, 0x00D2	; 0x8000d2 <__brkval+0x1>
+ c2e:	28 17       	cp	r18, r24
+ c30:	39 07       	cpc	r19, r25
+ c32:	69 f4       	brne	.+26     	; 0xc4e <free+0x10c>
+ c34:	30 97       	sbiw	r30, 0x00	; 0
+ c36:	29 f4       	brne	.+10     	; 0xc42 <free+0x100>
+ c38:	10 92 d4 00 	sts	0x00D4, r1	; 0x8000d4 <__flp+0x1>
+ c3c:	10 92 d3 00 	sts	0x00D3, r1	; 0x8000d3 <__flp>
+ c40:	02 c0       	rjmp	.+4      	; 0xc46 <free+0x104>
+ c42:	13 82       	std	Z+3, r1	; 0x03
+ c44:	12 82       	std	Z+2, r1	; 0x02
+ c46:	b0 93 d2 00 	sts	0x00D2, r27	; 0x8000d2 <__brkval+0x1>
+ c4a:	a0 93 d1 00 	sts	0x00D1, r26	; 0x8000d1 <__brkval>
+ c4e:	df 91       	pop	r29
+ c50:	cf 91       	pop	r28
+ c52:	08 95       	ret
+
+00000c54 <_exit>:
+ c54:	f8 94       	cli
+
+00000c56 <__stop_program>:
+ c56:	ff cf       	rjmp	.-2      	; 0xc56 <__stop_program>
