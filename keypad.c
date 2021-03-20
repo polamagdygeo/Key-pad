@@ -36,8 +36,8 @@ typedef enum{
 	KEYPAD_BUTTON_MAY_BE_RELEASED,
 }tKeypad_ButtonState;
 
-static ptQueue Keypad_Buffer;
-static const char Keypad_Char[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {{'1','2','3'},
+static ptQueue keypad_ring_buffer;
+static const char keypad_char_map[KEYPAD_ROW_NO][KEYPAD_COL_NO] = {{'1','2','3'},
 		{'4','5','6'},
 		{'7','8','9'},
 		{'*','0','#'}
@@ -50,9 +50,9 @@ void Keypad_Init(void)
 	DIO_ConfigPort(KEYPAD_PORT,0x70,DIO_INPUT);
 	DIO_WritePort(KEYPAD_PORT,0x70,0x70);
 
-	Keypad_Buffer = Queue_Create(QUEUE_TYPE_CHAR_PTR);
+	keypad_ring_buffer = Queue_Create(QUEUE_TYPE_CHAR_PTR);
 
-	if(Keypad_Buffer == 0)
+	if(keypad_ring_buffer == 0)
 		while(1);
 
 	OS_AddTask(0,Keypad_Update,5,0,0,TASK_STATE_NOT_READY);
@@ -84,7 +84,7 @@ void Keypad_Update(void)
 			if(current_sample == KEYPAD_ASSERTION_LEVEL)
 			{
 				button_state[current_row][col_itr] = KEYPAD_BUTTON_PRESSED;
-				key = Keypad_Char[current_row][col_itr];
+				key = keypad_char_map[current_row][col_itr];
 				col_itr = KEYPAD_COL_NO; /*break outer loop*/
 			}
 			else
@@ -131,9 +131,9 @@ void Keypad_Update(void)
 		{
 			*char_ptr = key;
 
-			if(Queue_Enqueue(Keypad_Buffer,char_ptr))
+			if(!Queue_Enqueue(keypad_ring_buffer,char_ptr))
 			{
-
+				/*failed to enqueue*/
 			}
 		}
 	}
@@ -143,7 +143,7 @@ char Keypad_GetChar(void)
 	char ret_char = 0;
 	void *ret_char_ptr = 0;
 
-	if(Queue_Dequeue(Keypad_Buffer,&ret_char_ptr))
+	if(Queue_Dequeue(keypad_ring_buffer,&ret_char_ptr))
 	{
 		ret_char = *((char*)ret_char_ptr);
 		free(ret_char_ptr);

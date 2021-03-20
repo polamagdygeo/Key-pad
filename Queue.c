@@ -62,7 +62,7 @@ uint8_t Queue_IsFull(ptQueue pQ)
 ptQueue Queue_Create(tQueue_Type Queue_Type)
 {
 	uint8_t itr ;
-	ptQueue pQ=malloc(sizeof(struct tQueue));
+	ptQueue pQ = malloc(sizeof(struct tQueue));
 
 	if(pQ != 0)
 	{
@@ -215,7 +215,7 @@ uint8_t Queue_Traverse(ptQueue pQ,uint8_t (*p)(void* element,void* parameter,uin
 
 			if(itr == QUEUE_MAX_LENGTH-1)
 			{
-				itr=0;
+				itr = 0;
 			}
 			else
 			{

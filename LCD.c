@@ -75,15 +75,15 @@ void LCD_WriteString(uint8_t* str,uint8_t len)
 	}
 }
 
-void LCD_SetCursor(uint8_t x,uint8_t y)
+void LCD_SetCursor(uint8_t row,uint8_t col)
 {
-	if (x==0)
+	if(row == 0)
 	{
-		LCD_SendCommand(0x80+y);
+		LCD_SendCommand(0x80 + col);
 	}
-	else if (x==1)
+	else if (row == 1)
 	{
-		LCD_SendCommand(0xC0+y);
+		LCD_SendCommand(0xC0 + col);
 	}
 }
 
